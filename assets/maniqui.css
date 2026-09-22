@@ -530,3 +530,9 @@ svg[data-vista="rostro"] .lm-rotulo{ font-size:5.4px; stroke-width:1.4; letter-s
 .oscuro .lm .lm-limpiar,.lm[data-fondo="oscuro"] .lm-limpiar{ background:transparent; border-color:rgba(255,255,255,.2); color:rgba(251,249,245,.75); }
 .oscuro .lm .lm-btn-1,.lm[data-fondo="oscuro"] .lm-btn-1{ background:var(--lm-crema); color:var(--lm-ink); }
 .oscuro .lm .lm-btn-2,.lm[data-fondo="oscuro"] .lm-btn-2{ background:transparent; color:var(--lm-crema); border-color:rgba(255,255,255,.24); }
+
+
+/* --- ajuste responsivo doctor Leal: contener overflow a 375px --- */
+.lm, .lm *{ box-sizing:border-box; }
+.lm-card-txt b, .lm-card-txt span{ overflow-wrap:break-word; word-break:break-word; }
+.lm-lista{ flex-basis:140px; }

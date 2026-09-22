@@ -1786,3 +1786,6 @@ html {
 .valoracion.con-foto-valoracion>.valoracion-foto{grid-area:foto}
 .valoracion.con-foto-valoracion>.valoracion-pantallas{grid-area:pant}
 }
+
+/* Gente Bien sin foto: texto + botón, una sola columna (P-32, 22-sep) */
+.forbes-portada.gente-bien-sola{grid-template-columns:1fr}
