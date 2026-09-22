@@ -15,19 +15,22 @@
 }
 
 :root {
-  --color-fondo:#FAF7F2;
-  --color-superficie:#F4EEE6;
-  --color-tinta:#1A1614;
-  --color-secundario:#4A403C;
-  --color-acento:#8A2F3F;
-  --color-acento-activo:#6B2131;
-  --color-oscuro:#231A1D;
-  --color-sobre-oscuro:#F4EEE6;
-  --color-foco:#8A2F3F;
-  --color-foco-inverso:#F4EEE6;
-  --color-error:#6B2131;
-  --color-exito:#1A1614;
-  --color-borde:#4A403C;
+  --color-fondo:#FFFFFF;
+  --color-superficie:#FBF9F5;
+  --color-tinta:#14161A;
+  --color-secundario:#4A5058;
+  --color-acento:#8C6D1F;
+  --color-acento-activo:#6E5416;
+  --color-oro:#C9A227;
+  --color-oro-suave:#F6CA67;
+  --color-linea:#E7E2D6;
+  --color-oscuro:#14161A;
+  --color-sobre-oscuro:#F6CA67;
+  --color-foco:#8C6D1F;
+  --color-foco-inverso:#FBF9F5;
+  --color-error:#9B2C2C;
+  --color-exito:#14161A;
+  --color-borde:#8C6D1F;
   --margen:clamp(24px,5vw,72px);
   --ancho:1392px;
   --cabecera:84px
@@ -118,7 +121,7 @@ h3 {
   align-items:center;
   padding:10px var(--margen);
   background:var(--color-fondo);
-  border-bottom:1px solid var(--color-superficie)
+  border-bottom:1px solid var(--color-oro)
 }
 
 .menu,
@@ -169,31 +172,13 @@ h3 {
   text-transform:uppercase
 }
 
-#menu-principal {
-  position:absolute;
-  top:calc(100% + 1px);
-  left:var(--margen);
-  right:var(--margen);
-  padding:24px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:0;
-  border:1px solid var(--color-borde);
-  background:var(--color-fondo);
-  box-shadow:0 18px 32px rgba(35,26,29,.12)
-}
 
 #menu-principal[hidden] {
   display:none
 }
 
 #menu-principal a {
-  min-height:44px;
-  display:flex;
-  align-items:center;
-  padding:8px 12px;
-  text-decoration:none;
-  border-bottom:1px solid var(--color-superficie)
+  text-decoration:none
 }
 
 #menu-principal a[aria-current=page] {
@@ -232,9 +217,9 @@ h3 {
 
 .accion {
   padding:11px 18px;
-  background:var(--color-acento);
-  border:1px solid var(--color-acento);
-  color:var(--color-fondo)
+  background:var(--color-oscuro);
+  border:1px solid var(--color-oro);
+  color:var(--color-sobre-oscuro)
 }
 
 .fuente {
@@ -550,12 +535,6 @@ body {
   font-size:12px
 }
 
-#menu-principal {
-  left:var(--margen);
-  right:var(--margen);
-  grid-template-columns:1fr;
-  padding:16px
-}
 
 .inicio,
 .pagina,
@@ -967,10 +946,6 @@ html {
   max-width:100%
 }
 
-#menu-principal {
-  max-height:calc(100svh - var(--cabecera) - 24px);
-  overflow:auto
-}
 
 .control-recorrido {
   position:relative;
@@ -1335,13 +1310,11 @@ html {
 
 
 :root { --cabecera:126px }
-.cabecera { row-gap:4px; padding-bottom:0 }
 .accesos {
-  grid-column:1/-1;
+  grid-column:2;
   display:flex;
   justify-content:center;
   gap:42px;
-  border-top:1px solid var(--color-superficie);
 }
 .accesos a {
   display:flex;
@@ -1397,7 +1370,7 @@ html {
  position:fixed;
  top:12px;
  left:12px;
- z-index:30;
+ z-index:60;
  min-height:44px;
  padding:10px 16px;
  transform:translateY(-150%);
@@ -1462,4 +1435,279 @@ html {
 .retrato-metodo{max-width:300px;margin-top:32px}
 .clinica-portada{display:block;padding:60px 0}
 .instalaciones{grid-template-columns:1fr;gap:26px;margin-top:26px}
+}
+
+
+/* ---- cabecera con logotipo y hamburguesa (22-sep) ---- */
+.cabecera {
+  grid-template-columns:auto 1fr auto;
+  gap:12px
+}
+
+.marca {
+  justify-self:start;
+  display:flex;
+  align-items:center;
+  min-height:44px;
+  text-decoration:none
+}
+
+.marca img {
+  display:block;
+  width:auto;
+  height:26px;
+  max-width:min(56vw,300px);
+  object-fit:contain
+}
+
+.cabecera .accesos {
+  justify-self:center
+}
+
+.tapa-derecha {
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:4px
+}
+
+.menu {
+  justify-self:auto;
+  flex-direction:row-reverse;
+  gap:10px;
+  padding:12px 10px;
+  cursor:pointer
+}
+
+.barras {
+  display:block;
+  width:22px;
+  height:14px;
+  position:relative
+}
+
+.barras::before,
+.barras::after,
+.barras span {
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:1.5px;
+  background:var(--color-tinta);
+  transition:transform .28s ease,opacity .2s ease
+}
+
+.barras::before { top:0 }
+.barras span { top:6.25px }
+.barras::after { bottom:0 }
+
+.menu[aria-expanded=true] .barras::before { transform:translateY(6.25px) rotate(45deg) }
+.menu[aria-expanded=true] .barras span { opacity:0 }
+.menu[aria-expanded=true] .barras::after { transform:translateY(-6.25px) rotate(-45deg) }
+
+.velo-menu {
+  position:fixed;
+  inset:0;
+  z-index:38;
+  background:rgba(20,22,26,.34);
+  opacity:0;
+  transition:opacity .3s ease
+}
+
+.velo-menu.abierto { opacity:1 }
+.velo-menu[hidden] { display:none }
+
+#menu-principal {
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:auto;
+  width:min(92vw,420px);
+  z-index:40;
+  display:block;
+  grid-template-columns:none;
+  padding:0;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  border:0;
+  border-left:1px solid var(--color-oro);
+  background:var(--color-fondo);
+  box-shadow:-18px 0 40px rgba(20,22,26,.16);
+  transform:translateX(100%);
+  transition:transform .32s cubic-bezier(.22,.61,.36,1)
+}
+
+#menu-principal.abierto { transform:translateX(0) }
+#menu-principal[hidden] { display:none }
+
+.panel-cabeza {
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 20px;
+  background:var(--color-fondo);
+  border-bottom:1px solid var(--color-oro)
+}
+
+.panel-cabeza img {
+  display:block;
+  height:22px;
+  width:auto
+}
+
+.cerrar-menu {
+  min-width:44px;
+  min-height:44px;
+  border:0;
+  background:transparent;
+  color:var(--color-tinta);
+  font-size:24px;
+  line-height:1;
+  cursor:pointer
+}
+
+.lista-menu,
+.sub-menu {
+  list-style:none;
+  margin:0;
+  padding:0
+}
+
+.lista-menu > li { border-bottom:1px solid var(--color-linea) }
+
+.lista-menu a,
+.abre-rama {
+  display:flex;
+  align-items:center;
+  min-height:52px;
+  padding:12px 20px;
+  width:100%;
+  text-align:left;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  color:var(--color-tinta);
+  font:400 16px/1.35 'Inter Tight',Arial,sans-serif
+}
+
+.rama-cabeza {
+  display:grid;
+  grid-template-columns:1fr 56px;
+  align-items:center
+}
+
+.rama-cabeza > a { padding-right:8px }
+
+.abre-rama {
+  justify-content:center;
+  min-width:56px;
+  padding:12px 0;
+  cursor:pointer
+}
+
+.signo {
+  display:block;
+  width:12px;
+  height:12px;
+  position:relative
+}
+
+.signo::before,
+.signo::after {
+  content:"";
+  position:absolute;
+  background:var(--color-acento);
+  transition:transform .25s ease,opacity .25s ease
+}
+
+.signo::before { left:0; right:0; top:5.25px; height:1.5px }
+.signo::after { top:0; bottom:0; left:5.25px; width:1.5px }
+
+.abre-rama[aria-expanded=true] .signo::after { transform:scaleY(0); opacity:0 }
+
+.sub-menu { background:var(--color-superficie) }
+.sub-menu[hidden] { display:none }
+
+.sub-menu li + li { border-top:1px solid var(--color-linea) }
+
+.sub-menu a {
+  min-height:48px;
+  padding-left:34px;
+  color:var(--color-secundario);
+  font-size:15px
+}
+
+.lista-menu a[aria-current=page] {
+  color:var(--color-acento);
+  box-shadow:inset 3px 0 0 var(--color-oro)
+}
+
+.panel-pie {
+  display:grid;
+  gap:10px;
+  padding:22px 20px 34px;
+  border-top:1px solid var(--color-oro)
+}
+
+.panel-pie .accion {
+  justify-content:center;
+  text-align:center;
+  text-decoration:none
+}
+
+.dato-menu {
+  display:flex;
+  align-items:center;
+  min-height:44px;
+  color:var(--color-secundario);
+  font-size:14px;
+  text-decoration:none
+}
+
+.dato-menu:hover { color:var(--color-acento) }
+
+/* ---- pie: consultorio ---- */
+.pie-contacto {
+  display:grid;
+  gap:6px;
+  padding:26px 0 4px;
+  border-top:1px solid var(--color-oro)
+}
+
+.pie-contacto .titulo-pie {
+  margin:0 0 6px;
+  font:400 12px/1 'Inter Tight',Arial,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--color-secundario)
+}
+
+.pie-contacto p { margin:0 }
+
+.pie-contacto a {
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  color:var(--color-tinta);
+  text-decoration:none;
+  border-bottom:1px solid var(--color-oro)
+}
+
+.pie-contacto a:hover { color:var(--color-acento) }
+
+.redes-pie a + a { margin-left:14px }
+
+@media (max-width:860px) {
+  .cabecera .accesos { display:none }
+}
+
+@media (max-width:700px) {
+  .marca img { height:22px }
+  #menu-principal { width:100vw; max-width:100vw }
 }
