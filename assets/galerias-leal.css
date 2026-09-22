@@ -1,0 +1,139 @@
+/* Lote E · 22-sep-2026 — antes y después a un clic (P-12).
+   Deja el brinco de ancla por debajo de la cabecera fija en /before-after. */
+#mommy-makeover-total-face-and-body,
+#lipo-total-definer,
+#blue-lifting,
+#celebrity-face,
+#facetite{
+  scroll-margin-top:calc(var(--cabecera, 64px) + 24px);
+}
+
+/* Visor de antes/después a pantalla completa (P-12).
+   Las fichas ya existentes (#antes-despues .fichas-procedimientos figure.documento)
+   se vuelven tocables; el visor las abre en grande, sin filtro ni texto encima de la foto. */
+#antes-despues .lb-disparador{
+  cursor:zoom-in;
+}
+#antes-despues .lb-disparador:focus-visible{
+  outline:2px solid var(--color-acento,#8C6D1F);
+  outline-offset:4px;
+}
+#antes-despues .lb-disparador:hover img{
+  opacity:.92;
+}
+#antes-despues .lb-disparador img{
+  transition:opacity .15s ease;
+}
+
+.lb-galeria{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  box-sizing:border-box;
+}
+.lb-galeria[hidden]{ display:none; }
+
+.lb-velo{
+  position:absolute;
+  inset:0;
+  background:rgba(20,22,26,.93);
+}
+
+.lb-marco{
+  position:relative;
+  z-index:1;
+  margin:0;
+  max-width:min(90vw,920px);
+  max-height:74vh;
+  display:flex;
+}
+.lb-foto{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:74vh;
+  object-fit:contain;
+  border-radius:4px;
+}
+
+.lb-pie{
+  position:relative;
+  z-index:1;
+  margin:16px 0 0;
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  font-family:'Inter Tight',sans-serif;
+}
+.lb-etiqueta{
+  font-family:Marcellus,Georgia,serif;
+  font-size:18px;
+  color:var(--color-superficie,#FBF9F5);
+}
+.lb-contador{
+  font-size:14px;
+  letter-spacing:.02em;
+  color:rgba(251,249,245,.62);
+}
+
+.lb-cerrar,
+.lb-flecha{
+  position:absolute;
+  z-index:2;
+  border-radius:50%;
+  border:1px solid rgba(201,162,39,.4);
+  background:rgba(20,22,26,.6);
+  color:var(--color-superficie,#FBF9F5);
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  padding:0;
+}
+.lb-cerrar:hover,
+.lb-flecha:hover{
+  border-color:var(--color-oro,#C9A227);
+}
+.lb-cerrar:focus-visible,
+.lb-flecha:focus-visible{
+  outline:2px solid var(--color-oro,#C9A227);
+  outline-offset:2px;
+}
+
+.lb-cerrar{
+  top:20px;
+  right:20px;
+  width:44px;
+  height:44px;
+  font-size:26px;
+}
+.lb-flecha{
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;
+  height:48px;
+  font-size:30px;
+}
+.lb-flecha--prev{ left:20px; }
+.lb-flecha--next{ right:20px; }
+
+body.lb-bloqueo{ overflow:hidden; }
+
+@media (max-width:640px){
+  .lb-galeria{ padding:16px; }
+  .lb-marco{ max-height:58vh; }
+  .lb-foto{ max-height:58vh; }
+  .lb-flecha{ width:40px; height:40px; font-size:22px; }
+  .lb-flecha--prev{ left:6px; }
+  .lb-flecha--next{ right:6px; }
+  .lb-cerrar{ top:10px; right:10px; width:38px; height:38px; font-size:20px; }
+  .lb-pie{ font-size:13px; text-align:center; }
+  .lb-etiqueta{ font-size:16px; }
+}
