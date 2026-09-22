@@ -22,7 +22,24 @@
     var pares = leer(); var ocupado = false;
     function abajo() { mensajes.scrollTop = mensajes.scrollHeight; }
     function mensaje(clase, valor) { var n = crear('p', 'lpa-m ' + clase, valor); if (clase === 'lpa-u') n.setAttribute('data-no-traducir',''); mensajes.appendChild(n); abajo(); return n; }
-    function cta() { var cont = crear('div', 'lpa-chips'); var a = crear('a', 'lpa-chip', 'Valoración'); a.href = RUTA; cont.appendChild(a); mensajes.appendChild(cont); abajo(); }
+    /* El cerebro termina sus respuestas con [[valoracion]] / [[whatsapp]] / [[idioma:xx]]:
+       se sacan del texto ANTES de pintar (si no, se ven en crudo) y se vuelven marcadores. */
+    function extraerMarcadores(s) {
+      var marcadores = [];
+      var limpio = s.replace(/\[\[([^\]]*)\]\]/g, function (_, m) { m = m.trim().toLowerCase(); if (marcadores.indexOf(m) < 0) marcadores.push(m); return ''; });
+      return { texto: limpio.replace(/\n{3,}/g, '\n\n').trim(), marcadores: marcadores };
+    }
+    function cta(marcadores) {
+      marcadores = marcadores || [];
+      var cont = crear('div', 'lpa-chips');
+      var a = crear('a', 'lpa-chip', 'Valoración'); a.href = RUTA; cont.appendChild(a);
+      if (marcadores.indexOf('whatsapp') >= 0) {
+        var w = crear('a', 'lpa-chip', enIngles ? 'Message me on WhatsApp' : 'Escribirme por WhatsApp');
+        w.href = textoWa(); w.target = '_blank'; w.rel = 'noopener'; w.setAttribute('data-no-traducir', '');
+        cont.appendChild(w);
+      }
+      mensajes.appendChild(cont); abajo();
+    }
     function mostrarHistorial() { mensajes.replaceChildren(); if (!pares.length) return; pares.forEach(function (p) { mensaje('lpa-u', p.u); mensaje('lpa-a', p.a); cta(); }); }
     function abrir() { panel.hidden = false; bola.setAttribute('aria-expanded', 'true'); mostrarHistorial(); entrada.focus(); }
     function cerrarPanel() { panel.hidden = true; bola.setAttribute('aria-expanded', 'false'); bola.focus(); }
@@ -34,7 +51,7 @@
       var control = new AbortController(); var reloj = setTimeout(function () { control.abort(); }, 8000);
       fetch('https://hostess.mx/api/asistente/liposser', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mensaje: pregunta, pagina: location.pathname, idioma: window.LealIdioma?.activo || 'es' }), signal: control.signal })
         .then(function (r) { if (!r.ok) throw new Error('respuesta'); return r.text(); })
-        .then(function (respuesta) { respuesta = respuesta.trim().slice(0, 1000); if (!respuesta) throw new Error('vacia'); espera.textContent = respuesta; espera.classList.remove('lpa-pensando'); pares.push({ u: pregunta, a: respuesta }); guardar(pares); cta(); })
+        .then(function (respuesta) { respuesta = respuesta.trim().slice(0, 1000); if (!respuesta) throw new Error('vacia'); var limpio = extraerMarcadores(respuesta); if (!limpio.texto) throw new Error('vacia'); espera.textContent = limpio.texto; espera.classList.remove('lpa-pensando'); pares.push({ u: pregunta, a: limpio.texto }); guardar(pares); cta(limpio.marcadores); })
         .catch(function () { espera.remove(); error.hidden = false; texto(error, 'Inténtalo otra vez.'); cta(); })
         .finally(function () { clearTimeout(reloj); ocupado = false; enviar.disabled = false; if (!panel.hidden) entrada.focus(); abajo(); });
     });
