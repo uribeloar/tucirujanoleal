@@ -1705,6 +1705,10 @@ html {
 
 @media (max-width:860px) {
   .cabecera .accesos { display:none }
+  /* sin el nav de en medio la tapa cae en la columna 1fr y empuja fuera del margen (360px) */
+  .cabecera { grid-template-columns:minmax(0,1fr) auto }
+  .marca { min-width:0 }
+  .marca img { max-width:100% }
 }
 
 @media (max-width:700px) {
