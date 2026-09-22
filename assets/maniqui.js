@@ -54,6 +54,18 @@
     marcar: 'definicion', definir: 'definicion', marcaje: 'definicion', abs: 'definicion'
   };
 
+  /* El nombre que ve la paciente sale de la pagina (ingles en /en/). El que
+     viaja al doctor NUNCA se traduce: el lee su aviso en espanol. */
+  var NOMBRES_ES = {
+    'rostro': 'Rostro', 'parpados': 'Parpados', 'orejas': 'Orejas',
+    'papada': 'Papada y cuello', 'busto': 'Busto', 'brazos': 'Brazos',
+    'espalda-alta': 'Espalda alta', 'abdomen': 'Abdomen', 'definicion': 'Definicion',
+    'flancos': 'Flancos y cintura', 'espalda-baja': 'Espalda baja',
+    'piel-abdomen': 'Piel del abdomen', 'caderas': 'Caderas',
+    'gluteos': 'Gluteos', 'muslos': 'Muslos'
+  };
+  var INGLES = (document.documentElement.getAttribute('lang') || '').toLowerCase().indexOf('en') === 0;
+
   var LLAVE = 'liposser:zonas';
   var WA = '523332239324';   // WhatsApp de Hostess. NUNCA el de la clínica.
 
@@ -77,6 +89,8 @@
 
   /* El nombre visible vive en el marcado, no aquí: así el día que exista la
      versión en inglés sale del mismo motor sin duplicar diccionarios. */
+  function nombreEs(z) { return NOMBRES_ES[z] || nombre(z); }
+
   function nombre(z) {
     var c = $('.lm-card[data-zona="' + z + '"] .lm-card-txt b', raiz);
     if (c) return c.textContent.trim();
@@ -133,7 +147,9 @@
     if (res) {
       res.hidden = elegidas.length === 0;
       var cta = $('[data-lm-cuenta]', res);
-      if (cta) cta.textContent = elegidas.length === 1 ? '1 zona marcada' : elegidas.length + ' zonas marcadas';
+      if (cta) cta.textContent = INGLES
+        ? (elegidas.length === 1 ? '1 area selected' : elegidas.length + ' areas selected')
+        : (elegidas.length === 1 ? '1 zona marcada' : elegidas.length + ' zonas marcadas');
 
       var cont = $('[data-lm-chips]', res);
       if (cont) {
@@ -143,7 +159,7 @@
           b.type = 'button';
           b.className = 'lm-chip';
           b.setAttribute('data-quitar', z);
-          b.setAttribute('aria-label', 'Quitar ' + nombre(z));
+          b.setAttribute('aria-label', (INGLES ? 'Remove ' : 'Quitar ') + nombre(z));
           b.innerHTML = nombre(z) +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
           cont.appendChild(b);
@@ -176,7 +192,7 @@
     });
     var grupo = cuerpo ? 'cuerpo' : enGrupo(MAMA_GLUTEO) ? 'mama-gluteo' : enGrupo(ROSTRO) ? 'rostro' : '';
     $$('[data-lm-campo]').forEach(function (i) { i.value = grupo; });
-    $$('[data-lm-detalle]').forEach(function (i) { i.value = texto; });
+    $$('[data-lm-detalle]').forEach(function (i) { i.value = elegidas.map(nombreEs).join(' \u00b7 '); });
     $$('[data-lm-zonas]').forEach(function (i) { i.value = elegidas.join(','); });
 
     guardar();
