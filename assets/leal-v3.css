@@ -33,7 +33,11 @@
   --color-borde:#8C6D1F;
   --margen:clamp(24px,5vw,72px);
   --ancho:1392px;
-  --cabecera:84px
+  --cabecera:84px;
+  --tipo-titulos:Marcellus,Georgia,serif;
+  --tipo-titulos-peso:400;
+  --tipo-cuerpo:'Inter Tight',Arial,sans-serif;
+  --tipo-cuerpo-peso:400
 }
 
 * {
@@ -48,7 +52,7 @@ body {
   margin:0;
   background:var(--color-fondo);
   color:var(--color-tinta);
-  font:400 18px/1.58 'Inter Tight',Arial,sans-serif;
+  font:var(--tipo-cuerpo-peso) 18px/1.58 var(--tipo-cuerpo);
   font-synthesis:none
 }
 
@@ -87,8 +91,8 @@ h2,
 h3,
 blockquote,
 legend {
-  font-family:Marcellus,Georgia,serif;
-  font-weight:400;
+  font-family:var(--tipo-titulos);
+  font-weight:var(--tipo-titulos-peso);
   letter-spacing:-.025em
 }
 
@@ -161,13 +165,13 @@ h3 {
   justify-content:center;
   text-align:center;
   text-decoration:none;
-  font:400 23px/1.05 Marcellus,Georgia,serif;
+  font:var(--tipo-titulos-peso) 23px/1.05 var(--tipo-titulos);
   white-space:nowrap
 }
 
 .autor span {
   margin-top:5px;
-  font:400 12px/1 'Inter Tight',Arial,sans-serif;
+  font:var(--tipo-cuerpo-peso) 12px/1 var(--tipo-cuerpo);
   letter-spacing:.12em;
   text-transform:uppercase
 }
@@ -471,7 +475,7 @@ footer>div {
 
 .firma-pie {
   margin:0 0 20px;
-  font:400 30px/1.1 Marcellus,Georgia,serif
+  font:var(--tipo-titulos-peso) 30px/1.1 var(--tipo-titulos)
 }
 
 .pie-legal {
@@ -857,7 +861,7 @@ html {
 
 .nota-google span {
   display:block;
-  font:400 84px/1.2 Marcellus,Georgia,serif;
+  font:var(--tipo-titulos-peso) 84px/1.2 var(--tipo-titulos);
   margin-bottom:16px
 }
 
@@ -876,7 +880,7 @@ html {
 }
 
 .concierges p {
-  font:400 27px/1.35 Marcellus,Georgia,serif;
+  font:var(--tipo-titulos-peso) 27px/1.35 var(--tipo-titulos);
   margin:0
 }
 
@@ -1328,7 +1332,7 @@ html {
 .accesos a[aria-current=page] { color:var(--color-acento) }
 .accesos a:last-child { text-decoration:underline }
 .grupo-menu { padding:0 10px }
-.grupo-menu>p { font:400 22px/1.2 Marcellus,Georgia,serif; margin:8px 12px 16px }
+.grupo-menu>p { font:var(--tipo-titulos-peso) 22px/1.2 var(--tipo-titulos); margin:8px 12px 16px }
 .presentacion-enlaces { display:flex; gap:12px 24px; flex-wrap:wrap }
 .procedimientos-portada { border-top:1px solid var(--color-borde); padding:76px 0 42px }
 .encabezado-procedimientos { display:grid; grid-template-columns:23% 1fr; gap:clamp(30px,7vw,112px); align-items:baseline }
@@ -1342,7 +1346,7 @@ html {
   min-height:102px;
   border-bottom:1px solid var(--color-borde);
   text-decoration:none;
-  font:400 clamp(25px,2.35vw,34px)/1.2 Marcellus,Georgia,serif;
+  font:var(--tipo-titulos-peso) clamp(25px,2.35vw,34px)/1.2 var(--tipo-titulos);
 }
 .seleccion-procedimientos a>span:last-child { color:var(--color-acento) }
 .seleccion-procedimientos a:hover>span:first-child { text-decoration:underline }
@@ -1594,7 +1598,7 @@ html {
   border:0;
   background:transparent;
   color:var(--color-tinta);
-  font:400 16px/1.35 'Inter Tight',Arial,sans-serif
+  font:var(--tipo-cuerpo-peso) 16px/1.35 var(--tipo-cuerpo)
 }
 
 .rama-cabeza {
@@ -1683,7 +1687,7 @@ html {
 
 .pie-contacto .titulo-pie {
   margin:0 0 6px;
-  font:400 12px/1 'Inter Tight',Arial,sans-serif;
+  font:var(--tipo-cuerpo-peso) 12px/1 var(--tipo-cuerpo);
   letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--color-secundario)
@@ -1729,17 +1733,17 @@ html {
 }
 
 /* P-22 · franja de certificaciones internacionales (portada, acerca de mí, medios) */
-.banda-sellos{background:var(--color-oscuro);padding:44px var(--margen);margin:40px 0 0}
-.banda-sellos>h2{color:var(--color-sobre-oscuro);margin:0 0 28px;font-size:clamp(21px,2.3vw,28px);font-weight:400;letter-spacing:.01em}
+.banda-sellos{background:var(--color-superficie);padding:44px var(--margen);margin:40px 0 0;border-top:1px solid var(--color-linea);border-bottom:1px solid var(--color-linea)}
+.banda-sellos>h2{color:var(--color-tinta);margin:0 0 28px;font-size:clamp(21px,2.3vw,28px);font-weight:var(--tipo-titulos-peso);letter-spacing:.01em}
 .fila-sellos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 22px;align-items:start}
 .fila-sellos li{margin:0}
 .fila-sellos figure{margin:0;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .fila-sellos img{box-sizing:border-box;display:block;width:100%;height:88px;padding:16px 0;object-fit:contain;object-position:left center}
 .fila-sellos .sello-alto img{padding:9px 0}
-.fila-sellos figcaption{font-size:12px;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;color:var(--color-sobre-oscuro);opacity:.85}
+.fila-sellos figcaption{font-size:12px;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;color:var(--color-secundario);opacity:1}
 .fila-sellos a{display:block;min-height:44px;text-decoration:none}
 @media(min-width:761px){.banda-sellos{padding:62px var(--margen)}.fila-sellos{grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 30px}.fila-sellos img{height:116px;padding:21px 0}.fila-sellos .sello-alto img{padding:5px 0}}
 .placa-cofepris{margin:30px 0 0;padding:0;display:block}
 .placa-cofepris img{display:block;height:62px;width:auto;max-width:100%}
-.placa-cofepris span{display:block;margin-top:9px;font-size:12px;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;color:var(--color-sobre-oscuro);opacity:.85}
+.placa-cofepris span{display:block;margin-top:9px;font-size:12px;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;color:var(--color-secundario);opacity:1}
 @media(min-width:761px){.placa-cofepris{margin:40px 0 0}.placa-cofepris img{height:76px}}

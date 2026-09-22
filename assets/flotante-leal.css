@@ -9,7 +9,7 @@
 @media (max-width:360px){.flota-leal{right:12px;bottom:calc(76px + env(safe-area-inset-bottom));gap:10px}.flota-leal a{width:46px;height:46px}}
 @media print{.flota-leal{display:none}}
 /* Enlace de WhatsApp dentro de la burbuja de la guia virtual */
-.lpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:11px 14px;border-top:1px solid var(--color-borde,#8C6D1F);color:var(--color-tinta,#14161A);text-decoration:none;font:400 14px/1.2 'Inter Tight',system-ui,sans-serif}
+.lpa-wa{display:flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:11px 14px;border-top:1px solid var(--color-borde,#8C6D1F);color:var(--color-tinta,#14161A);text-decoration:none;font:var(--tipo-cuerpo-peso) 14px/1.2 var(--tipo-cuerpo)}
 .lpa-wa svg{display:block;width:18px;height:18px;flex:none;fill:#25D366}
 .lpa-wa:hover{background:var(--color-superficie,#FBF9F5)}
 .lpa-wa:focus-visible{outline:3px solid var(--color-oro,#C9A227);outline-offset:-3px}

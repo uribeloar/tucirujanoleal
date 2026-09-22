@@ -69,10 +69,10 @@
   display:flex;
   align-items:baseline;
   gap:10px;
-  font-family:'Inter Tight',sans-serif;
+  font-family:var(--tipo-cuerpo);
 }
 .lb-etiqueta{
-  font-family:Marcellus,Georgia,serif;
+  font-family:var(--tipo-titulos);
   font-size:18px;
   color:var(--color-superficie,#FBF9F5);
 }
