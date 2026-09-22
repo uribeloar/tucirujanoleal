@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es-MX">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Muestra de letra · portada del Dr. Leal en tres candidatas libres</title>
+<style>
+/* ── Las tres candidatas, autoalojadas. Los mismos archivos que usan las portadas. ── */
+@font-face{font-family:'Fraunces';src:url('fuentes/fraunces-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fraunces';src:url('fuentes/fraunces-latin-ext.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Playfair Var';src:url('fuentes/playfair-var-latin.woff2') format('woff2');font-weight:300 900;font-stretch:87.5% 112.5%;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Playfair Var';src:url('fuentes/playfair-var-latin-ext.woff2') format('woff2');font-weight:300 900;font-stretch:87.5% 112.5%;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';src:url('fuentes/instrument-serif-latin.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Serif';src:url('fuentes/instrument-serif-latin-ext.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+/* Letras de la casa, para el texto de servicio de esta muestra */
+@font-face{font-family:'Inter Tight';src:url('/tucirujanoleal/assets/fonts/inter-tight-regular.woff2') format('woff2');font-weight:400 500;font-style:normal;font-display:swap}
+
+:root{
+  --color-fondo:#FFFFFF;--color-superficie:#FBF9F5;--color-tinta:#14161A;--color-secundario:#4A5058;
+  --color-acento:#8C6D1F;--color-oro:#C9A227;--color-linea:#E7E2D6;--margen:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--color-fondo);color:var(--color-tinta);font-family:'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.faja{max-width:1180px;margin:0 auto;padding:0 var(--margen)}
+
+header.top{background:var(--color-superficie);border-bottom:1px solid var(--color-linea);padding:clamp(28px,6vw,56px) 0}
+.ceja{margin:0 0 10px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-acento);font-weight:500}
+header.top h1{margin:0 0 14px;font-size:clamp(28px,5.4vw,44px);line-height:1.1;font-weight:400;font-family:'Instrument Serif',Georgia,serif}
+.aviso{margin:0;max-width:62ch;font-size:clamp(14px,3.6vw,16px);line-height:1.6;color:var(--color-secundario)}
+.aviso b{color:var(--color-tinta);font-weight:500}
+.nota-legal{margin:16px 0 0;padding:12px 14px;border-left:3px solid var(--color-oro);background:var(--color-fondo);font-size:13px;line-height:1.55;color:var(--color-secundario);max-width:62ch}
+
+.indice{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.indice a{display:inline-block;padding:8px 14px;border:1px solid var(--color-linea);border-radius:999px;color:var(--color-tinta);text-decoration:none;font-size:13px}
+.indice a:hover{border-color:var(--color-acento);color:var(--color-acento)}
+
+section.cand{padding:clamp(32px,7vw,64px) 0;border-bottom:1px solid var(--color-linea)}
+.rotulo{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;margin:0 0 6px}
+.rotulo .num{font-size:12px;letter-spacing:.2em;color:var(--color-acento);font-weight:500}
+.rotulo h2{margin:0;font-size:clamp(24px,5vw,38px);font-weight:400;line-height:1.1}
+.rotulo .lic{font-size:12px;color:var(--color-secundario)}
+.veredicto{margin:0 0 22px;max-width:62ch;font-size:14px;line-height:1.6;color:var(--color-secundario)}
+
+/* Tira O G — el punto P-11: ver si la O y la G siguen gordas */
+.tira{margin:0 0 6px;padding:18px 20px;background:var(--color-superficie);border:1px solid var(--color-linea);overflow:hidden}
+.tira .glifos{display:block;font-size:clamp(84px,22vw,160px);line-height:.95;letter-spacing:.06em;margin:0 0 4px}
+.tira .abc{display:block;font-size:clamp(20px,5vw,32px);line-height:1.2;color:var(--color-secundario);word-break:break-word}
+.pie-tira{margin:0 0 26px;font-size:12px;color:var(--color-secundario)}
+
+.titular-real{margin:0 0 26px;padding:22px 20px;border:1px solid var(--color-linea)}
+.titular-real .t{margin:0 0 12px;font-size:clamp(30px,7vw,60px);line-height:1.04;font-weight:400}
+.titular-real .b{margin:0;font-size:clamp(15px,3.8vw,19px);line-height:1.5;color:var(--color-secundario)}
+
+.marco{position:relative;border:1px solid var(--color-linea);background:var(--color-superficie)}
+.marco iframe{display:block;width:100%;height:560px;border:0}
+.marco-pie{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--color-linea);font-size:12px;color:var(--color-secundario)}
+.marco-pie a{color:var(--color-acento);font-weight:500}
+@media(min-width:900px){.marco iframe{height:720px}}
+
+footer.fin{padding:clamp(28px,6vw,52px) 0;background:var(--color-superficie)}
+footer.fin p{margin:0 0 8px;font-size:13px;line-height:1.6;color:var(--color-secundario);max-width:70ch}
+
+/* aplicación de cada candidata dentro de esta portada comparativa */
+.c-fraunces{font-family:'Fraunces',Georgia,serif}
+.c-fraunces .glifos,.c-fraunces .t,.c-fraunces h2{font-variation-settings:'SOFT' 0,'WONK' 1,'opsz' 144;font-weight:300}
+.c-fraunces .abc,.c-fraunces .b{font-variation-settings:'SOFT' 0,'WONK' 0,'opsz' 14}
+.c-playfair{font-family:'Playfair Var',Georgia,serif;font-stretch:87.5%}
+.c-playfair .glifos,.c-playfair .t,.c-playfair h2{font-variation-settings:'opsz' 1200;font-weight:400}
+.c-playfair .abc,.c-playfair .b{font-variation-settings:'opsz' 12}
+.c-instrument{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="faja">
+    <p class="ceja">Muestra de letra · página del Dr. Alejandro Leal</p>
+    <h1>La portada del doctor, con la letra cambiada tres veces</h1>
+    <p class="aviso">Pablo pidió <b>Canela Condensed</b> para toda la página. <b>Canela es una letra de paga y no la tenemos comprada</b>, así que nada de esto es Canela ni la imita con su nombre: son las <b>tres libres más cercanas</b> a ese dibujo —serif de contraste alto, remate afilado, letra de portada de revista—. Abajo va <b>su portada real</b>, entera, tres veces: una por candidata. La letra está aplicada a <b>todo</b>: titulares y texto corrido.</p>
+    <p class="nota-legal">Cada bloque trae primero una tira grande con la <b>O</b> y la <b>G</b> —el reclamo de que se veían gordas— para compararlas de un vistazo. Paleta, fotos, video y textos: intactos. Aquí <b>solo</b> cambia la letra. Esta muestra <b>no está publicada</b>; el sitio real sigue con Marcellus e Inter Tight.</p>
+    <ul class="indice">
+      <li><a href="#fraunces">1 · Fraunces</a></li>
+      <li><a href="#playfair">2 · Playfair estrechada</a></li>
+      <li><a href="#instrument">3 · Instrument Serif</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ───────────────── 1 · FRAUNCES ───────────────── -->
+<section class="cand" id="fraunces">
+  <div class="faja">
+    <div class="rotulo c-fraunces">
+      <span class="num">CANDIDATA 1</span>
+      <h2>Fraunces</h2>
+      <span class="lic">variable · SIL OFL, libre para uso comercial</span>
+    </div>
+    <p class="veredicto">Variable de verdad: se le pidieron los ejes <b>opsz 144</b>, <b>SOFT 0</b> (remates lo más afilados que da) y <b>WONK 1</b> (formas de display) en titulares, y opsz 14 / WONK 0 en el texto corrido. Es la de remate más dramático de las tres, pero <b>de ancho normal</b>: no es condensada.</p>
+
+    <div class="tira c-fraunces">
+      <span class="glifos">O G</span>
+      <span class="abc">OG · ÓG · Ojos Grandes · 0 8 6</span>
+    </div>
+    <p class="pie-tira">P-11 · así se ven la «O» y la «G» en Fraunces.</p>
+
+    <div class="titular-real c-fraunces">
+      <p class="t">La precisión empieza por conocerte.</p>
+      <p class="b">Soy Alejandro Leal. Analizo tu anatomía, escucho tus expectativas y considero el momento que atraviesas para diseñar un plan quirúrgico contigo.</p>
+    </div>
+
+    <div class="marco">
+      <iframe src="portada-fraunces.html" title="Portada del Dr. Leal en Fraunces" loading="eager"></iframe>
+      <div class="marco-pie">
+        <span>Su portada real, completa, en Fraunces — se puede desplazar dentro del marco.</span>
+        <a href="portada-fraunces.html" target="_blank" rel="noopener">Abrirla sola →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 2 · PLAYFAIR ESTRECHADA ───────────────── -->
+<section class="cand" id="playfair">
+  <div class="faja">
+    <div class="rotulo c-playfair">
+      <span class="num">CANDIDATA 2</span>
+      <h2>Playfair estrechada</h2>
+      <span class="lic">variable con eje de ancho · SIL OFL</span>
+    </div>
+    <p class="veredicto">Es la <b>Playfair variable</b> (la de 2023, no «Playfair Display»): trae eje de ancho <b>wdth</b> y aquí está puesta en su <b>mínimo real, 87.5%</b> — estrecha de verdad, por el eje, <b>sin deformarla</b>. En titulares se le subió el eje óptico a <b>opsz 1200</b>, que es donde los trazos finos se adelgazan y sube el contraste.</p>
+
+    <div class="tira c-playfair">
+      <span class="glifos">O G</span>
+      <span class="abc">OG · ÓG · Ojos Grandes · 0 8 6</span>
+    </div>
+    <p class="pie-tira">P-11 · así se ven la «O» y la «G» en Playfair al 87.5% de ancho.</p>
+
+    <div class="titular-real c-playfair">
+      <p class="t">La precisión empieza por conocerte.</p>
+      <p class="b">Soy Alejandro Leal. Analizo tu anatomía, escucho tus expectativas y considero el momento que atraviesas para diseñar un plan quirúrgico contigo.</p>
+    </div>
+
+    <div class="marco">
+      <iframe src="portada-playfair.html" title="Portada del Dr. Leal en Playfair estrechada" loading="eager"></iframe>
+      <div class="marco-pie">
+        <span>Su portada real, completa, en Playfair estrechada al 87.5%.</span>
+        <a href="portada-playfair.html" target="_blank" rel="noopener">Abrirla sola →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 3 · INSTRUMENT SERIF ───────────────── -->
+<section class="cand" id="instrument">
+  <div class="faja">
+    <div class="rotulo c-instrument">
+      <span class="num">CANDIDATA 3</span>
+      <h2>Instrument Serif</h2>
+      <span class="lic">un solo peso · SIL OFL</span>
+    </div>
+    <p class="veredicto">Nace angosta y de contraste alto: astas gruesas contra remates finísimos, letras altas y apretadas. No tiene ejes ni pesos que tocar —viene así— y por eso es la que se parece al dibujo de la referencia sin trucos. Su límite: <b>un solo peso</b>, no hay Thin ni Light ni negritas de verdad.</p>
+
+    <div class="tira c-instrument">
+      <span class="glifos">O G</span>
+      <span class="abc">OG · ÓG · Ojos Grandes · 0 8 6</span>
+    </div>
+    <p class="pie-tira">P-11 · así se ven la «O» y la «G» en Instrument Serif.</p>
+
+    <div class="titular-real c-instrument">
+      <p class="t">La precisión empieza por conocerte.</p>
+      <p class="b">Soy Alejandro Leal. Analizo tu anatomía, escucho tus expectativas y considero el momento que atraviesas para diseñar un plan quirúrgico contigo.</p>
+    </div>
+
+    <div class="marco">
+      <iframe src="portada-instrument.html" title="Portada del Dr. Leal en Instrument Serif" loading="eager"></iframe>
+      <div class="marco-pie">
+        <span>Su portada real, completa, en Instrument Serif.</span>
+        <a href="portada-instrument.html" target="_blank" rel="noopener">Abrirla sola →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="fin">
+  <div class="faja">
+    <p>Las tres letras están guardadas dentro de esta misma carpeta: la muestra se ve igual sin internet, no jala nada de ningún servidor de fuera.</p>
+    <p>Ninguna se estiró ni se apretó con trucos de escala. Donde dice «estrechada» es porque la letra trae ese eje y se movió; donde no lo trae, se dejó su ancho natural.</p>
+    <p>Sin publicar. El sitio del doctor no se tocó.</p>
+  </div>
+</footer>
+
+</body>
+</html>
