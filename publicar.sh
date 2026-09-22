@@ -33,4 +33,5 @@ cd "$REPO"
 git add -A
 git commit -q -m "Dr. Leal: $(date '+%d %b %H:%M')" || { echo "sin cambios que publicar"; exit 0; }
 git push -q origin main
-echo "publicado: https://uribeloar.github.io/tucirujanoleal/"
+echo "publicado · LINK VIVO (el que ve Pablo/Liposser/Yolotzi): https://tucirujanoleal.vercel.app/"
+echo "   espejo tecnico del mismo push: https://uribeloar.github.io/tucirujanoleal/"
