@@ -163,7 +163,21 @@
         : 'Hola, me gustaría información sobre una valoración en Liposser.';
       a.setAttribute('href', 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg));
     });
-    $$('[data-lm-campo]').forEach(function (i) { i.value = texto; });
+    // El servidor del formulario solo acepta cuatro grupos (cuerpo · mama-gluteo ·
+    // rostro · consultorio). Las zonas marcadas viajan como detalle; el campo
+    // «interes» lleva el grupo, o la solicitud se rechazaria al enviarse.
+    var ROSTRO = ['rostro', 'parpados', 'orejas', 'papada'];
+    var MAMA_GLUTEO = ['busto', 'gluteos'];
+    var enGrupo = function (lista) {
+      return elegidas.some(function (z) { return lista.indexOf(z) !== -1; });
+    };
+    var cuerpo = elegidas.some(function (z) {
+      return ROSTRO.indexOf(z) === -1 && MAMA_GLUTEO.indexOf(z) === -1;
+    });
+    var grupo = cuerpo ? 'cuerpo' : enGrupo(MAMA_GLUTEO) ? 'mama-gluteo' : enGrupo(ROSTRO) ? 'rostro' : '';
+    $$('[data-lm-campo]').forEach(function (i) { i.value = grupo; });
+    $$('[data-lm-detalle]').forEach(function (i) { i.value = texto; });
+    $$('[data-lm-zonas]').forEach(function (i) { i.value = elegidas.join(','); });
 
     guardar();
 
