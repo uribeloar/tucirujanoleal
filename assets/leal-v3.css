@@ -1,4 +1,22 @@
 @font-face {
+  font-family:'Instrument Serif';
+  src:url('/tucirujanoleal/assets/fonts/instrument-serif-latin.woff2') format('woff2');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
+}
+
+@font-face {
+  font-family:'Instrument Serif';
+  src:url('/tucirujanoleal/assets/fonts/instrument-serif-latin-ext.woff2') format('woff2');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF
+}
+
+@font-face {
   font-family:Marcellus;
   src:url('/tucirujanoleal/assets/fonts/marcellus-regular.woff2') format('woff2');
   font-weight:400;
@@ -34,7 +52,10 @@
   --margen:clamp(24px,5vw,72px);
   --ancho:1392px;
   --cabecera:84px;
-  --tipo-titulos:Marcellus,Georgia,serif;
+  /* ── LA LETRA DE LOS TÍTULOS ── el día que llegue Canela Condensed Regular,
+     se le agrega su @font-face arriba y se cambia SOLO el primer nombre de
+     este renglón. Nada más en todo el sitio. */
+  --tipo-titulos:'Instrument Serif',Marcellus,Georgia,serif;
   --tipo-titulos-peso:400;
   --tipo-cuerpo:'Inter Tight',Arial,sans-serif;
   --tipo-cuerpo-peso:400
@@ -1747,3 +1768,21 @@ html {
 .placa-cofepris img{display:block;height:62px;width:auto;max-width:100%}
 .placa-cofepris span{display:block;margin-top:9px;font-size:12px;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;color:var(--color-secundario);opacity:1}
 @media(min-width:761px){.placa-cofepris{margin:40px 0 0}.placa-cofepris img{height:76px}}
+
+/* Fotos en huecos blancos — P-30 22-sep: valoracion / acerca-de-mi / procedimientos. Sin filtro, sin capa, sin texto encima. */
+.apertura.con-foto{display:grid;grid-template-columns:1fr;grid-template-areas:"texto" "foto";gap:28px;align-items:start}
+.apertura-foto{grid-area:foto;margin:0}
+.apertura-texto{grid-area:texto}
+.apertura-foto img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.apertura-foto figcaption{margin-top:10px;font-size:.85rem;line-height:1.4;color:var(--color-secundario)}
+.valoracion.con-foto-valoracion{display:grid;grid-template-columns:1fr;gap:28px}
+.valoracion-foto{margin:0}
+.valoracion-foto img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.valoracion-foto figcaption{margin-top:10px;font-size:.85rem;line-height:1.4;color:var(--color-secundario)}
+@media(min-width:641px){
+.apertura.con-foto{grid-template-columns:38% 1fr;grid-template-areas:"foto texto";gap:48px}
+.valoracion.con-foto-valoracion{grid-template-columns:38% 1fr;grid-template-areas:"cab cab" "foto pant";gap:16px 48px}
+.valoracion.con-foto-valoracion>.apertura{grid-area:cab}
+.valoracion.con-foto-valoracion>.valoracion-foto{grid-area:foto}
+.valoracion.con-foto-valoracion>.valoracion-pantallas{grid-area:pant}
+}

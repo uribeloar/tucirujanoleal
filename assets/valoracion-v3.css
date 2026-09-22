@@ -1,7 +1,7 @@
 .filtro-valoracion { border-top:1px solid var(--color-borde); padding-top:24px; min-width:0 }
 .filtro-valoracion [hidden], .acuse-valoracion[hidden] { display:none!important }
 .filtro-valoracion fieldset { border:0; padding:0; margin:0 0 24px; min-width:0 }
-.filtro-valoracion legend { font:400 30px/1.2 Marcellus,serif; margin-bottom:20px; padding:0 }
+.filtro-valoracion legend { font:var(--tipo-titulos-peso) 30px/1.2 var(--tipo-titulos); margin-bottom:20px; padding:0 }
 .filtro-opciones { display:grid; gap:10px }
 .filtro-opcion { display:flex; gap:8px; align-items:center; min-height:58px; padding:6px 12px; border:1px solid var(--color-borde); cursor:pointer; line-height:1.4 }
 .filtro-opcion:has(input:checked) { background:var(--color-superficie); border-color:var(--color-acento); box-shadow:inset 3px 0 var(--color-acento) }
