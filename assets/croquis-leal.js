@@ -8,12 +8,13 @@
   if (!marco || !window.fetch) return;
 
   var SVGNS = 'http://www.w3.org/2000/svg';
-  var ANCHO_INICIAL = 470;   // metros que se ven de lado a lado al abrir
+  var ANCHO_INICIAL = 760;   // metros de lado a lado al abrir: lo que hace falta para que entre Avenida de las Américas, la referencia que da el texto de arriba
   var MIN = 110, MAX = 1300; // piso y techo del acercamiento, en metros
   var TOPE = 620;            // no se puede arrastrar mas alla de esto, en metros
 
   var svg, capaVias, capaNombres, pin, tarjeta, aviso;
   var etiquetas = [];
+  var mandos = null, cajaMandos = null;
   var cx = 0, cy = 0, ancho = ANCHO_INICIAL, alto = ANCHO_INICIAL * 0.8;
   var W = 1, H = 1, despierto = false;
 
@@ -51,13 +52,17 @@
           var t = nuevo('text', { 'class': suya ? 'suya' : null });
           t.textContent = calle.nombre;
           capaNombres.appendChild(t);
-          etiquetas.push({ el: t, pts: puntos(tramo.d), suya: suya, largo: tramo.largo });
+          etiquetas.push({ el: t, pts: puntos(tramo.d), suya: suya, largo: tramo.largo,
+            rango: suya ? 3 : (calle.clase === 'secondary' || calle.clase === 'primary') ? 2
+                   : calle.clase === 'tertiary' ? 1 : 0 });
         }
       });
     });
 
-    // la calle suya primero, luego las mas largas: asi manda quien importa cuando se estorban
-    etiquetas.sort(function (a, b) { return (b.suya - a.suya) || (b.largo - a.largo); });
+    // Primero la suya, luego las avenidas y al final las calles chicas; a igual
+    // rango, la mas larga. Un croquis nombra las avenidas antes que los callejones:
+    // si no, Avenida de las Américas —la referencia que da el texto— se quedaba muda.
+    etiquetas.sort(function (a, b) { return (b.rango - a.rango) || (b.largo - a.largo); });
 
     svg.appendChild(capaVias);
     svg.appendChild(capaNombres);
@@ -87,36 +92,74 @@
 
   /* Los nombres se acomodan donde se esta mirando: nunca encima del pin,
      nunca uno sobre otro, y si no caben se callan. */
+  // La caja REAL de un nombre, en pixeles y ya girada. Antes se medía el ancla,
+  // no el letrero: por eso AVENIDA PROVIDENCIA se metía debajo de los mandos con
+  // el ancla "fuera" de la zona. En pixeles el letrero no cambia de tamaño con el
+  // acercamiento (la letra va en unidades del mapa), así que se mide una sola vez.
+  function cajaTexto(e, px, py, a, m) {
+    if (!e.w) {
+      var b = e.el.getBBox();
+      e.w = b.width / m; e.h = b.height / m;
+    }
+    var r = a * Math.PI / 180;
+    var co = Math.abs(Math.cos(r)), si = Math.abs(Math.sin(r));
+    var d = 3.4 + 0.35 * e.h;                       // el dy lo sube sobre la calle
+    var mx = px + d * Math.sin(r), my = py - d * Math.cos(r);
+    var hw = (co * e.w + si * e.h) / 2, hh = (si * e.w + co * e.h) / 2;
+    return [mx - hw, my - hh, mx + hw, my + hh];
+  }
+
+  function choca(a, b) {
+    return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3];
+  }
+
   function colocarNombres() {
     var m = ancho / W;
     var x0 = cx - ancho / 2, y0 = cy - alto / 2;
-    var puestos = [], holgura = Math.max(52, Math.min(W, H) * 0.19);
+    if (!cajaMandos && mandos) {
+      var cm = mandos.getBoundingClientRect(), cq = marco.getBoundingClientRect();
+      cajaMandos = [cm.left - cq.left - 8, cm.top - cq.top - 8,
+                    cm.right - cq.left + 8, cm.bottom - cq.top + 8];
+    }
+    var pxPin = (ancho / 2 - cx) / ancho * W, pyPin = (alto / 2 - cy) / alto * H;
+    var vedadas = [[pxPin - 22, pyPin - 42, pxPin + 22, pyPin + 6]];
+    if (cajaMandos) vedadas.push(cajaMandos);
+    var puestos = [];
     etiquetas.forEach(function (e) {
-      var punto = cerca(e.pts, cx, cy);
-      if (e.suya && Math.hypot(punto.p[0], punto.p[1]) < ancho * 0.16)
-        punto = cerca(e.pts, cx, cy - alto * 0.3);
-      var p = punto.p;
-      var px = (p[0] - x0) / ancho * W, py = (p[1] - y0) / alto * H;
-      var cabe = px > W * .12 && px < W * .88 && py > H * .06 && py < H * .94;
-      if (px > W - 104 && py < 124) cabe = false;   // ahi viven los mandos
-      // ni encima del pin ni encima de otro nombre
-      if (cabe && Math.hypot(px - (ancho / 2 - cx) / ancho * W, py - (alto / 2 - cy) / alto * H) < 38) cabe = false;
-      for (var i = 0; cabe && i < puestos.length; i++)
-        if (Math.hypot(px - puestos[i][0], py - puestos[i][1]) < holgura) cabe = false;
-      e.el.style.display = cabe ? '' : 'none';
-      if (!cabe) return;
-      puestos.push([px, py]);
-      var a = Math.atan2(punto.v[1], punto.v[0]) * 180 / Math.PI;
-      if (a > 90) a -= 180; else if (a < -90) a += 180;
-      e.el.setAttribute('dy', (-3.4 * m).toFixed(2));
-      e.el.setAttribute('transform',
-        'translate(' + p[0].toFixed(1) + ',' + p[1].toFixed(1) + ') rotate(' + a.toFixed(1) + ')');
+      // Se prueban varios puntos de SU PROPIA calle antes de rendirse: un nombre
+      // que estorba en el centro casi siempre cabe un poco mas arriba o al lado,
+      // y asi el croquis no se queda mudo por un choque de dos letreros.
+      var tiros = e.suya
+        ? [[0, -alto * .3], [0, 0], [0, alto * .3], [-ancho * .26, 0], [ancho * .26, 0]]
+        : [[0, 0], [0, -alto * .28], [0, alto * .28], [-ancho * .26, 0], [ancho * .26, 0],
+           [-ancho * .26, -alto * .26], [ancho * .26, -alto * .26],
+           [-ancho * .26, alto * .26], [ancho * .26, alto * .26],
+           [0, -alto * .45], [0, alto * .45]];
+      for (var t = 0; t < tiros.length; t++) {
+        var punto = cerca(e.pts, cx + tiros[t][0], cy + tiros[t][1]);
+        var p = punto.p;
+        var px = (p[0] - x0) / ancho * W, py = (p[1] - y0) / alto * H;
+        var a = Math.atan2(punto.v[1], punto.v[0]) * 180 / Math.PI;
+        if (a > 90) a -= 180; else if (a < -90) a += 180;
+        e.el.setAttribute('dy', (-3.4 * m).toFixed(2));
+        e.el.setAttribute('transform',
+          'translate(' + p[0].toFixed(1) + ',' + p[1].toFixed(1) + ') rotate(' + a.toFixed(1) + ')');
+        if (e.el.style.display === 'none') e.el.style.display = '';   // visible para medirlo
+        var c = cajaTexto(e, px, py, a, m);
+        var cabe = c[0] > 4 && c[1] > 4 && c[2] < W - 4 && c[3] < H - 4;
+        for (var i = 0; cabe && i < vedadas.length; i++) if (choca(c, vedadas[i])) cabe = false;
+        for (var j = 0; cabe && j < puestos.length; j++) if (choca(c, puestos[j])) cabe = false;
+        if (cabe) { puestos.push([c[0] - 6, c[1] - 4, c[2] + 6, c[3] + 4]); return; }
+      }
+      e.el.style.display = 'none';
     });
   }
 
   function medir() {
     var caja = marco.getBoundingClientRect();
     W = caja.width || 1; H = caja.height || 1;
+    mandos = marco.querySelector('.croquis-mandos');
+    cajaMandos = null;
     alto = ancho * (H / W);
   }
 
