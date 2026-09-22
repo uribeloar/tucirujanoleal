@@ -1,0 +1,532 @@
+/* maniqui.css — el maniquí viejito de Liposser, portado a tucirujanoleal.
+   Colores y tipos adaptados a la paleta clara del doctor (no oscura).
+   Fallback local por si el :root del sitio aún no trae estas variables. */
+:root{
+  --color-fondo:#FFFFFF;
+  --color-superficie:#FBF9F5;
+  --color-tinta:#14161A;
+  --color-linea:#E7E2D6;
+  --color-secundario:#4A5058;
+  --color-acento:#8C6D1F;
+  --color-oro:#C9A227;
+}
+/* ==========================================================================
+   LIPOSSER · EL MANIQUÍ
+   --------------------------------------------------------------------------
+   Mapa corporal por REGIONES. Tocar una parte del cuerpo la marca sobre el
+   mismo dibujo — no navega, no abre otra pantalla. Se pueden marcar varias.
+
+   Tres vistas del mismo cuerpo: frente, espalda y un detalle del rostro
+   (a cuerpo entero la cara mide 10 px y el pulgar no cabe; el detalle es lo
+   que hace tocables los párpados y las orejas).
+
+   Prefijo `lm-` a propósito: el sitio ya tiene un maniquí de puntos con
+   prefijo `mq-` y las dos piezas tienen que poder convivir en una página
+   sin pisarse una sola clase.
+
+   Autocontenido: esta hoja no depende de liposser.css. Si se incrusta dentro
+   del sitio, las variables de marca se heredan; si va suelta (o en iframe),
+   los valores de reserva de :root las cubren.
+   ========================================================================== */
+
+.lm{
+  --lm-ink:var(--color-tinta);
+  --lm-slate:var(--color-tinta);
+  --lm-mute:var(--color-secundario);
+  --lm-crema:var(--color-superficie);
+  --lm-arena:#F2EDE4;
+  --lm-linea:var(--color-linea);
+  --lm-ambar:var(--color-oro);
+  --lm-ambar-lt:var(--color-oro);
+  --lm-ambar-dk:var(--color-acento);
+  --lm-r-s:12px;
+  --lm-r-m:18px;
+  --lm-r-l:26px;
+  --lm-ease:cubic-bezier(.22,.65,.2,1);
+
+  font-family:var(--tipo-cuerpo);
+  color:var(--lm-ink);
+  display:grid;
+  gap:26px;
+  align-items:start;
+}
+.lm *,.lm *::before,.lm *::after{ box-sizing:border-box; }
+
+/* En pantalla grande la figura ocupa lo que mide un cuerpo —angosto y alto—
+   y el tablero se queda con el resto. Darle media pantalla a la silueta es
+   lo que deja ese mar de vacío a los lados. */
+@media (min-width:940px){
+  .lm{ grid-template-columns:minmax(0,400px) minmax(0,1fr); gap:44px; align-items:center; }
+}
+
+/* ==========================================================================
+   1 · LA ESCENA (pestañas + figura)
+   ========================================================================== */
+.lm-escena{ display:grid; gap:14px; }
+
+/* --- las tres vistas --- */
+.lm-vistas{
+  display:flex;
+  gap:4px;
+  padding:4px;
+  border-radius:999px;
+  background:var(--lm-arena);
+  justify-self:center;
+  max-width:100%;
+}
+.lm-vista{
+  flex:1 1 0;
+  min-width:0;
+  min-height:44px;              /* el pulgar manda: 44 px de alto, siempre */
+  padding:0 16px;
+  border:0;
+  border-radius:999px;
+  background:none;
+  font:inherit;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--lm-mute);
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .28s var(--lm-ease), color .28s var(--lm-ease), box-shadow .28s var(--lm-ease);
+}
+.lm-vista:hover{ color:var(--lm-ambar-dk); }
+.lm-vista:focus-visible{ outline:2px solid var(--lm-ambar); outline-offset:2px; }
+.lm-vista[aria-selected="true"]{
+  background:var(--color-fondo);
+  color:var(--lm-ink);
+  box-shadow:0 2px 10px rgba(20,26,35,.07);
+}
+/* el punto ámbar avisa que esa vista tiene zonas marcadas aunque no se esté viendo */
+.lm-vista .lm-pip{
+  display:none;
+  width:6px; height:6px;
+  margin-left:7px;
+  border-radius:999px;
+  background:var(--lm-ambar);
+  vertical-align:middle;
+}
+.lm-vista.tiene .lm-pip{ display:inline-block; }
+
+/* --- el marco de la figura --- */
+.lm-fig{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  border-radius:var(--lm-r-l);
+  padding:16px 8px 20px;
+  background:
+    radial-gradient(120% 76% at 50% 10%, rgba(201,133,77,.10), transparent 62%),
+    linear-gradient(180deg, rgba(242,237,228,.7), rgba(242,237,228,0) 76%);
+}
+.lm-fig svg{
+  width:100%;
+  height:auto;
+  max-height:min(72vh,600px);
+  display:block;
+  overflow:visible;
+  touch-action:manipulation;    /* sin el retardo de 300 ms al tocar */
+}
+.lm-fig svg[hidden]{ display:none; }
+/* el rostro se dibuja a casi tres aumentos: si se le diera el mismo alto que al
+   cuerpo se saldría de la pantalla, así que manda el ancho. */
+.lm-fig svg[data-vista="rostro"]{ max-height:min(56vh,460px); }
+
+/* ==========================================================================
+   2 · EL DIBUJO
+   Regla de oro: todo se ve sin JavaScript. El JS solo agrega la clase `on`.
+   Si no carga, queda un diagrama impreso que se entiende — nunca un hueco.
+   ========================================================================== */
+.lm-linea{
+  fill:none;
+  stroke:var(--lm-ink);
+  stroke-opacity:.5;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.lm-detalle{
+  fill:none;
+  stroke:var(--lm-ink);
+  stroke-opacity:.22;
+  stroke-width:1.1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.lm-piso{
+  fill:none;
+  stroke:var(--lm-ink);
+  stroke-opacity:.12;
+  stroke-width:1;
+  stroke-dasharray:2 6;
+  vector-effect:non-scaling-stroke;
+}
+
+/* --- la región: apagada hasta que se elige --- */
+.lm-marca{
+  opacity:0;
+  transition:opacity .38s var(--lm-ease);
+  pointer-events:none;          /* el toque lo recibe su rectángulo, no la mancha */
+}
+.lm-marca-borde{
+  fill:none;
+  stroke:var(--lm-ambar);
+  stroke-width:1.4;
+  stroke-opacity:0;
+  vector-effect:non-scaling-stroke;
+  transition:stroke-opacity .38s var(--lm-ease);
+  pointer-events:none;
+}
+
+/* Definición es la única zona que no se pinta como mancha: vive dentro del
+   abdomen y le robaría el toque. Se enciende desde su tarjeta y lo que se
+   marca son las líneas del recto abdominal, que ya estaban dibujadas. */
+.lm-marca-traza{
+  fill:none;
+  stroke:var(--lm-ambar);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-opacity:0;
+  vector-effect:non-scaling-stroke;
+  transition:stroke-opacity .38s var(--lm-ease);
+  pointer-events:none;
+}
+[data-marca].on .lm-marca-traza{ stroke-opacity:.95; }
+[data-marca].mira .lm-marca-traza{ stroke-opacity:.45; }
+
+/* En el detalle del rostro el dibujo está a casi tres aumentos: el mismo trazo
+   que en el cuerpo entero se ve tímido, y el mismo borde de mancha se ve
+   gritón — dos aros sobre los ojos parecen gogles. Se compensa. */
+svg[data-vista="rostro"] .lm-detalle{ stroke-opacity:.34; }
+svg[data-vista="rostro"] [data-marca].on .lm-marca-borde{ stroke-opacity:.4; }
+svg[data-vista="rostro"] [data-marca].mira .lm-marca-borde{ stroke-opacity:.22; }
+
+/* --- el área de toque: invisible y generosa --- */
+.lm-zona{
+  fill:transparent;
+  stroke:none;
+  cursor:pointer;
+  outline:none;
+}
+.lm-zona:focus-visible{
+  stroke:var(--lm-ambar);
+  stroke-width:2;
+  stroke-dasharray:4 4;
+  vector-effect:non-scaling-stroke;
+}
+
+/* --- el rótulo: aparece con la selección, no antes --- */
+.lm-rotulo{
+  font-family:var(--tipo-cuerpo);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  fill:var(--lm-ambar-dk);
+  opacity:0;
+  transition:opacity .38s var(--lm-ease);
+  pointer-events:none;
+  paint-order:stroke;
+  stroke:var(--lm-crema);
+  stroke-width:3.4;
+  stroke-linejoin:round;
+}
+/* el tamaño va en unidades del dibujo, no en píxeles: el rostro está a 2.7
+   aumentos, así que su rótulo se mide en su propia escala o saldría enorme. */
+svg[data-vista="frente"] .lm-rotulo,
+svg[data-vista="espalda"] .lm-rotulo{ font-size:14px; }
+svg[data-vista="rostro"] .lm-rotulo{ font-size:5.4px; stroke-width:1.4; letter-spacing:.05em; }
+
+/* ---------- ENCENDIDO ---------- */
+[data-marca].on .lm-marca{ opacity:1; }
+[data-marca].on .lm-marca-borde{ stroke-opacity:.85; }
+/* el nombre escrito sobre el cuerpo, solo el de la última tocada o la mirada:
+   diez nombres a la vez son un muro de letras encimadas sobre el torso */
+[data-marca].on.rotulado .lm-rotulo,
+[data-marca].mira .lm-rotulo{ opacity:1; }
+
+/* el vistazo: pasar el cursor por la tarjeta enseña la región, tenue.
+   En teléfono no existe — por eso NADA depende de esto para funcionar. */
+[data-marca].mira .lm-marca{ opacity:.42; }
+[data-marca].mira .lm-marca-borde{ stroke-opacity:.4; }
+
+/* ==========================================================================
+   3 · LOS TRES ACABADOS DEL RESALTADO
+   Alex escoge. Se cambia con data-estilo en el contenedor .lm — el dibujo,
+   las zonas y el estado son exactamente los mismos en los tres.
+   ========================================================================== */
+
+/* A · LUZ — la región se enciende por dentro, degradada. El más suave. */
+.lm[data-estilo="luz"] .lm-marca{ fill:var(--lm-luz); }
+.lm[data-estilo="luz"] .lm-marca-borde{ stroke-width:1.2; }
+.lm[data-estilo="luz"] [data-marca].on .lm-marca-borde{ stroke-opacity:.6; }
+
+/* B · TRAZO — sin mancha: contorno firme y un rayado fino de plano médico. */
+.lm[data-estilo="trazo"] .lm-marca{ fill:var(--lm-rayado); }
+.lm[data-estilo="trazo"] .lm-marca-borde{ stroke-width:2; }
+.lm[data-estilo="trazo"] [data-marca].on .lm-marca-borde{ stroke-opacity:1; }
+
+/* C · SÓLIDO — ámbar plano y parejo. El más rotundo y el más legible de lejos. */
+.lm[data-estilo="solido"] .lm-marca{ fill:var(--lm-ambar); opacity:0; }
+.lm[data-estilo="solido"] [data-marca].on .lm-marca{ opacity:.22; }
+.lm[data-estilo="solido"] [data-marca].mira .lm-marca{ opacity:.1; }
+.lm[data-estilo="solido"] .lm-marca-borde{ stroke-width:1.6; }
+
+@media (prefers-reduced-motion:reduce){
+  .lm-marca,.lm-marca-borde,.lm-rotulo,.lm-vista{ transition:none; }
+}
+
+/* ==========================================================================
+   4 · EL TABLERO
+   ========================================================================== */
+.lm-panel{ display:grid; gap:14px; min-width:0; }
+
+.lm-grupo-tit{
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--lm-mute);
+  margin:4px 0 -4px;
+}
+
+.lm-cards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+}
+@media (min-width:620px){ .lm-cards{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (min-width:940px){ .lm-cards{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (min-width:1180px){ .lm-cards{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+
+.lm-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--lm-linea);
+  border-radius:var(--lm-r-s);
+  background:var(--color-fondo);
+  min-width:0;
+  transition:border-color .25s var(--lm-ease), box-shadow .25s var(--lm-ease), transform .25s var(--lm-ease);
+}
+.lm-card:hover{ border-color:var(--lm-ambar); box-shadow:0 2px 10px rgba(20,26,35,.06); transform:translateY(-2px); }
+.lm-card.on{ border-color:var(--lm-ambar); background:rgba(201,133,77,.07); }
+
+.lm-card-sel{
+  flex:1;
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  min-height:56px;              /* pulgar */
+  padding:11px 11px 10px;
+  border:0;
+  background:none;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  border-radius:var(--lm-r-s);
+}
+.lm-card-sel:focus-visible{ outline:2px solid var(--lm-ambar); outline-offset:2px; }
+
+/* la palomita: un aro que se llena. Sin colores de alarma — esto no es un error. */
+.lm-tic{
+  flex:none;
+  width:17px; height:17px;
+  margin-top:2px;
+  border-radius:999px;
+  border:1.6px solid var(--lm-linea);
+  display:grid;
+  place-items:center;
+  transition:border-color .22s var(--lm-ease), background .22s var(--lm-ease);
+}
+.lm-tic svg{ width:10px; height:10px; opacity:0; transform:scale(.5); transition:opacity .2s var(--lm-ease), transform .2s var(--lm-ease); }
+.lm-card:hover .lm-tic{ border-color:var(--lm-ambar); }
+.lm-card.on .lm-tic{ border-color:var(--lm-ambar); background:var(--lm-ambar); }
+.lm-card.on .lm-tic svg{ opacity:1; transform:scale(1); stroke:var(--color-fondo); }
+
+.lm-card-txt{ display:block; min-width:0; }
+.lm-card-txt b{ display:block; font-size:13.6px; font-weight:800; line-height:1.3; }
+.lm-card-txt span{ display:block; font-size:11.2px; color:var(--lm-mute); line-height:1.34; margin-top:1px; }
+
+.lm-card-ir{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  min-height:34px;
+  padding:0 11px 9px;
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:var(--lm-mute);
+  text-decoration:none;
+  transition:color .2s var(--lm-ease);
+}
+.lm-card-ir:hover{ color:var(--lm-ambar-dk); }
+.lm-card-ir svg{ width:12px; height:12px; flex:none; }
+
+/* ==========================================================================
+   5 · EL RESUMEN Y EL CIERRE
+   ========================================================================== */
+.lm-resumen{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px 14px;
+  padding:13px 15px;
+  border-radius:var(--lm-r-s);
+  background:var(--lm-arena);
+  font-size:13.2px;
+  line-height:1.5;
+}
+.lm-resumen[hidden]{ display:none; }
+
+/* El contador dice la frase entera ("3 zonas marcadas"), no un número suelto:
+   un 3 en un globo redondo obliga a adivinar de qué es. */
+.lm-cuenta{
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:0 11px;
+  border-radius:999px;
+  background:var(--lm-ambar);
+  color:var(--color-fondo);
+  font-size:12px;
+  font-weight:800;
+  white-space:nowrap;
+}
+.lm-lista{ flex:1 1 190px; min-width:0; }
+
+/* cada zona marcada se puede quitar desde aquí, sin buscarla en el dibujo */
+.lm-chips{ display:flex; flex-wrap:wrap; gap:6px; width:100%; }
+.lm-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:34px;
+  padding:0 6px 0 11px;
+  border:1px solid rgba(201,133,77,.4);
+  border-radius:999px;
+  background:var(--color-fondo);
+  font:inherit;
+  font-size:12.4px;
+  font-weight:700;
+  color:var(--lm-ambar-dk);
+  cursor:pointer;
+  transition:border-color .2s var(--lm-ease), background .2s var(--lm-ease);
+}
+.lm-chip:hover{ border-color:var(--lm-ambar); background:rgba(201,133,77,.08); }
+.lm-chip:focus-visible{ outline:2px solid var(--lm-ambar); outline-offset:2px; }
+.lm-chip svg{ width:11px; height:11px; opacity:.6; flex:none; }
+
+.lm-limpiar{
+  flex:none;
+  min-height:34px;
+  padding:0 13px;
+  border:1px solid var(--lm-linea);
+  border-radius:999px;
+  background:var(--color-fondo);
+  font:inherit;
+  font-size:12px;
+  font-weight:700;
+  color:var(--lm-slate);
+  cursor:pointer;
+  transition:border-color .2s var(--lm-ease), color .2s var(--lm-ease);
+}
+.lm-limpiar:hover{ border-color:var(--lm-ambar); color:var(--lm-ambar-dk); }
+.lm-limpiar:focus-visible{ outline:2px solid var(--lm-ambar); outline-offset:2px; }
+
+/* --- los botones de cierre --- */
+.lm-acciones{ display:flex; flex-wrap:wrap; gap:10px; }
+.lm-btn{
+  flex:1 1 200px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:52px;
+  padding:0 22px;
+  border:1px solid transparent;
+  border-radius:999px;
+  font:inherit;
+  font-size:14px;
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+  text-align:center;
+  transition:transform .2s var(--lm-ease), box-shadow .2s var(--lm-ease), background .2s var(--lm-ease), border-color .2s var(--lm-ease);
+}
+.lm-btn:focus-visible{ outline:2px solid var(--lm-ambar); outline-offset:3px; }
+.lm-btn-1{ background:var(--lm-ink); color:var(--lm-crema); }
+.lm-btn-1:hover{ transform:translateY(-2px); box-shadow:0 14px 34px rgba(20,26,35,.18); }
+.lm-btn-2{ background:var(--color-fondo); color:var(--lm-ink); border-color:var(--lm-linea); }
+.lm-btn-2:hover{ border-color:var(--lm-ambar); color:var(--lm-ambar-dk); transform:translateY(-2px); }
+.lm-btn svg{ width:16px; height:16px; flex:none; }
+
+/* La nota de encuadre. No es letra chica de descargo: dice qué ES esto,
+   y por eso va arriba de los botones y al mismo tamaño que se lee. */
+.lm-nota{
+  font-size:12.2px;
+  line-height:1.55;
+  color:var(--lm-mute);
+}
+
+/* ==========================================================================
+   6 · TELÉFONO — 375 px (iPhone) y 360 px (Android)
+   La figura manda por alto, no por ancho. El JS cierra el encuadre para que
+   la silueta no quede nadando, y las tarjetas pasan a ancho completo.
+   ========================================================================== */
+@media (max-width:759.98px){
+  .lm{ gap:20px; }
+  .lm-fig{ padding:12px 4px 16px; }
+  /* Alto FIJO, no en vh: de eso depende que el dedo alcance.
+     580 px de alto ÷ 690 unidades del encuadre = factor 0.84, y con eso la
+     franja más apretada (54 unidades) mide 45 px reales — por encima de los 44
+     que pide el pulgar. Si esto se ata a vh, en un teléfono corto la franja
+     baja a 36 px y la pieza deja de servir aunque se siga viendo bien. */
+  .lm-fig svg{ height:580px; width:auto; max-width:100%; max-height:none; }
+  .lm-fig svg[data-vista="rostro"]{ height:auto; width:100%; max-height:none; }
+  .lm-vista{ padding:0 12px; font-size:11.5px; }
+  .lm-acciones .lm-btn{ flex:1 1 100%; }
+  /* En teléfono el resumen sube al principio del panel: si se queda al final,
+     queda a quince tarjetas de scroll de donde el dedo acaba de tocar y el que
+     marca no ve nunca cuántas lleva. En escritorio no hace falta — la columna
+     entera se ve de un vistazo — así que el cambio vive solo aquí. */
+  .lm-resumen{ order:-1; position:sticky; top:8px; z-index:3; box-shadow:0 6px 18px -12px rgba(20,26,35,.5); }
+}
+@media (max-width:389.98px){
+  .lm-vista{ padding:0 9px; letter-spacing:.04em; }
+  .lm-cards{ gap:7px; }
+}
+
+/* ==========================================================================
+   7 · FONDO OSCURO (por si la pieza cae en una sección oscura del sitio)
+   ========================================================================== */
+.oscuro .lm,.lm[data-fondo="oscuro"]{
+  color:var(--lm-crema);
+}
+.oscuro .lm .lm-linea,.lm[data-fondo="oscuro"] .lm-linea{ stroke:var(--lm-crema); stroke-opacity:.6; }
+.oscuro .lm .lm-detalle,.lm[data-fondo="oscuro"] .lm-detalle{ stroke:var(--lm-crema); stroke-opacity:.28; }
+.oscuro .lm .lm-piso,.lm[data-fondo="oscuro"] .lm-piso{ stroke:var(--lm-crema); stroke-opacity:.16; }
+.oscuro .lm .lm-rotulo,.lm[data-fondo="oscuro"] .lm-rotulo{ fill:var(--lm-ambar-lt); stroke:var(--lm-ink); }
+.oscuro .lm .lm-fig,.lm[data-fondo="oscuro"] .lm-fig{
+  background:
+    radial-gradient(120% 76% at 50% 10%, rgba(201,133,77,.14), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.05), transparent 76%);
+}
+.oscuro .lm .lm-vistas,.lm[data-fondo="oscuro"] .lm-vistas{ background:rgba(255,255,255,.07); }
+.oscuro .lm .lm-vista[aria-selected="true"],.lm[data-fondo="oscuro"] .lm-vista[aria-selected="true"]{ background:rgba(255,255,255,.14); color:var(--color-fondo); }
+.oscuro .lm .lm-card,.lm[data-fondo="oscuro"] .lm-card{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.13); }
+.oscuro .lm .lm-card.on,.lm[data-fondo="oscuro"] .lm-card.on{ background:rgba(201,133,77,.16); border-color:var(--lm-ambar-lt); }
+.oscuro .lm .lm-card-txt span,.lm[data-fondo="oscuro"] .lm-card-txt span{ color:rgba(251,249,245,.55); }
+.oscuro .lm .lm-resumen,.lm[data-fondo="oscuro"] .lm-resumen{ background:rgba(255,255,255,.06); }
+.oscuro .lm .lm-chip,.lm[data-fondo="oscuro"] .lm-chip{ background:transparent; color:var(--lm-ambar-lt); }
+.oscuro .lm .lm-limpiar,.lm[data-fondo="oscuro"] .lm-limpiar{ background:transparent; border-color:rgba(255,255,255,.2); color:rgba(251,249,245,.75); }
+.oscuro .lm .lm-btn-1,.lm[data-fondo="oscuro"] .lm-btn-1{ background:var(--lm-crema); color:var(--lm-ink); }
+.oscuro .lm .lm-btn-2,.lm[data-fondo="oscuro"] .lm-btn-2{ background:transparent; color:var(--lm-crema); border-color:rgba(255,255,255,.24); }
