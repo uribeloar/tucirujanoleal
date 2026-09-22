@@ -1702,7 +1702,14 @@ html {
 
 .pie-contacto a:hover { color:var(--color-acento) }
 
-.redes-pie a + a { margin-left:14px }
+/* P-09 · las redes del pie son dibujos, no palabras: circulo de linea dorada
+   sobre la crema del pie, trazo en gris de texto, oro al tocarlo. 44x44 de dedo. */
+.redes-pie { display:flex; flex-wrap:wrap; gap:12px; margin-top:6px }
+.redes-pie a { display:grid; place-items:center; width:44px; height:44px; min-height:44px;
+  border:1px solid var(--color-borde); border-radius:999px; color:var(--color-secundario) }
+.redes-pie a svg { display:block; width:20px; height:20px }
+.redes-pie a:hover, .redes-pie a:focus-visible { color:var(--color-oro); border-color:var(--color-oro) }
+.redes-pie a:focus-visible { outline:3px solid var(--color-oro); outline-offset:2px }
 
 @media (max-width:860px) {
   .cabecera .accesos { display:none }
