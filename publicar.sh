@@ -9,7 +9,7 @@ REPO="$(cd "$(dirname "$0")" && pwd)"
 # la misma ruta que usa hostess.mx, así ningún enlace interno se rompe.
 rsync -a --delete --exclude '.DS_Store' \
   --exclude '.git' --exclude 'publicar.sh' --exclude 'robots.txt' \
-  --exclude '.nojekyll' --exclude 'ULTIMA-ACTUALIZACION.txt' \
+  --exclude '.nojekyll' --exclude 'vercel.json' --exclude 'ULTIMA-ACTUALIZACION.txt' \
   "$SRC/tucirujanoleal/" "$REPO/"
 mkdir -p "$REPO/_hostess"
 cp "$SRC/_hostess/firma.js" "$REPO/_hostess/firma.js"
