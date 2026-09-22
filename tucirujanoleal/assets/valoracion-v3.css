@@ -1,0 +1,39 @@
+.filtro-valoracion { border-top:1px solid var(--color-borde); padding-top:24px; min-width:0 }
+.filtro-valoracion [hidden], .acuse-valoracion[hidden] { display:none!important }
+.filtro-valoracion fieldset { border:0; padding:0; margin:0 0 24px; min-width:0 }
+.filtro-valoracion legend { font:400 30px/1.2 Marcellus,serif; margin-bottom:20px; padding:0 }
+.filtro-opciones { display:grid; gap:10px }
+.filtro-opcion { display:flex; gap:8px; align-items:center; min-height:58px; padding:6px 12px; border:1px solid var(--color-borde); cursor:pointer; line-height:1.4 }
+.filtro-opcion:has(input:checked) { background:var(--color-superficie); border-color:var(--color-acento); box-shadow:inset 3px 0 var(--color-acento) }
+.filtro-opcion input { appearance:none; flex:0 0 44px; width:44px; height:44px; margin:0; display:grid; place-items:center; background:transparent; cursor:pointer }
+.filtro-opcion input::before { content:""; width:20px; height:20px; border:1px solid var(--color-borde); background:var(--color-fondo); box-sizing:border-box }
+.filtro-opcion input[type=radio]::before { border-radius:50% }
+.filtro-opcion input:checked::before { background:var(--color-acento); box-shadow:inset 0 0 0 3px var(--color-fondo) }
+.filtro-opcion:focus-within { outline:2px solid var(--color-foco); outline-offset:3px }
+.filtro-campos { display:grid; gap:20px }
+.filtro-campo { display:grid; gap:8px; min-width:0 }
+.filtro-campo input { min-width:0; width:100%; min-height:52px; padding:12px; border:1px solid var(--color-borde); background:var(--color-fondo); color:var(--color-tinta); border-radius:0; font:inherit }
+.filtro-valoracion [aria-invalid=true] { outline:2px solid var(--color-error); outline-offset:2px }
+.filtro-consentimientos { display:grid; gap:16px }
+.filtro-consentimientos .filtro-opcion { align-items:flex-start; font-size:16px; line-height:1.5 }
+.filtro-consentimientos input { margin-top:0 }
+.filtro-error { color:var(--color-error); margin:12px 0; min-height:24px; font-size:16px }
+.filtro-acciones { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-top:24px }
+.filtro-acciones .accion { margin:0; min-height:50px; padding:12px 18px }
+.filtro-atras { min-width:60px; min-height:50px; border:0; border-bottom:1px solid var(--color-borde); background:transparent; color:var(--color-tinta); padding:10px 4px; font:inherit }
+.filtro-acciones button:disabled { cursor:wait; opacity:.7 }
+.filtro-progreso { display:flex; gap:5px; margin:0 0 24px }
+.filtro-progreso span { height:3px; flex:1; background:var(--color-borde) }
+.filtro-progreso span[data-completo] { background:var(--color-acento); height:5px }
+.filtro-honey { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%) }
+.acuse-valoracion { min-width:0; border-top:1px solid var(--color-borde); padding-top:26px }
+.acuse-valoracion h2 { font-size:38px }
+.folio-valoracion { overflow-wrap:anywhere; font-size:18px; font-variant-numeric:tabular-nums; padding:18px 0; border-top:1px solid var(--color-borde); border-bottom:1px solid var(--color-borde) }
+.acuse-valoracion .accion { margin-top:20px }
+@media(max-width:700px) {
+ .valoracion .apertura { padding-bottom:12px }
+ .filtro-valoracion { padding-top:24px }
+ .filtro-valoracion legend { font-size:28px }
+ .filtro-opcion { min-height:56px }
+ .filtro-acciones { margin-top:20px }
+}

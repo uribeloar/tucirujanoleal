@@ -1,0 +1,1465 @@
+@font-face {
+  font-family:Marcellus;
+  src:url('/tucirujanoleal/assets/fonts/marcellus-regular.woff2') format('woff2');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap
+}
+
+@font-face {
+  font-family:'Inter Tight';
+  src:url('/tucirujanoleal/assets/fonts/inter-tight-regular.woff2') format('woff2');
+  font-weight:400 500;
+  font-style:normal;
+  font-display:swap
+}
+
+:root {
+  --color-fondo:#FAF7F2;
+  --color-superficie:#F4EEE6;
+  --color-tinta:#1A1614;
+  --color-secundario:#4A403C;
+  --color-acento:#8A2F3F;
+  --color-acento-activo:#6B2131;
+  --color-oscuro:#231A1D;
+  --color-sobre-oscuro:#F4EEE6;
+  --color-foco:#8A2F3F;
+  --color-foco-inverso:#F4EEE6;
+  --color-error:#6B2131;
+  --color-exito:#1A1614;
+  --color-borde:#4A403C;
+  --margen:clamp(24px,5vw,72px);
+  --ancho:1392px;
+  --cabecera:84px
+}
+
+* {
+  box-sizing:border-box
+}
+
+html {
+  scroll-behavior:smooth
+}
+
+body {
+  margin:0;
+  background:var(--color-fondo);
+  color:var(--color-tinta);
+  font:400 18px/1.58 'Inter Tight',Arial,sans-serif;
+  font-synthesis:none
+}
+
+button,
+a,
+input {
+  touch-action:manipulation
+}
+
+button {
+  font:inherit;
+  cursor:pointer
+}
+
+button:disabled {
+  cursor:default
+}
+
+a {
+  color:inherit;
+  text-underline-offset:5px
+}
+
+img {
+  display:block;
+  max-width:100%;
+  height:auto
+}
+
+p {
+  margin:0 0 22px
+}
+
+h1,
+h2,
+h3,
+blockquote,
+legend {
+  font-family:Marcellus,Georgia,serif;
+  font-weight:400;
+  letter-spacing:-.025em
+}
+
+h1 {
+  font-size:clamp(48px,5.7vw,82px);
+  line-height:1.06;
+  margin:0 0 30px;
+  text-wrap:balance
+}
+
+h2 {
+  font-size:clamp(36px,3.7vw,57px);
+  line-height:1.12;
+  margin:0 0 24px
+}
+
+h3 {
+  font-size:28px;
+  line-height:1.18;
+  margin:38px 0 14px
+}
+
+.cabecera {
+  position:sticky;
+  top:0;
+  z-index:10;
+  min-height:var(--cabecera);
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:10px var(--margen);
+  background:var(--color-fondo);
+  border-bottom:1px solid var(--color-superficie)
+}
+
+.menu,
+.idioma {
+  min-width:44px;
+  min-height:44px;
+  border:0;
+  background:transparent;
+  color:var(--color-tinta);
+  font-size:12px;
+  letter-spacing:.08em
+}
+
+.menu {
+  justify-self:start;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px
+}
+
+.menu-simbolo {
+  font-size:21px;
+  line-height:1
+}
+
+.idioma {
+  justify-self:end;
+  padding:12px;
+  color:var(--color-secundario)
+}
+
+.autor {
+  display:flex;
+  min-height:44px;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  text-decoration:none;
+  font:400 23px/1.05 Marcellus,Georgia,serif;
+  white-space:nowrap
+}
+
+.autor span {
+  margin-top:5px;
+  font:400 12px/1 'Inter Tight',Arial,sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+
+#menu-principal {
+  position:absolute;
+  top:calc(100% + 1px);
+  left:var(--margen);
+  right:var(--margen);
+  padding:24px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  border:1px solid var(--color-borde);
+  background:var(--color-fondo);
+  box-shadow:0 18px 32px rgba(35,26,29,.12)
+}
+
+#menu-principal[hidden] {
+  display:none
+}
+
+#menu-principal a {
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  padding:8px 12px;
+  text-decoration:none;
+  border-bottom:1px solid var(--color-superficie)
+}
+
+#menu-principal a[aria-current=page] {
+  color:var(--color-acento)
+}
+
+.ceja {
+  font-size:12px;
+  line-height:1.4;
+  letter-spacing:.16em;
+  text-transform:uppercase
+}
+
+.firma {
+  font-size:12px;
+  letter-spacing:.06em;
+  color:var(--color-secundario)
+}
+
+.bajada {
+  font-size:20px;
+  line-height:1.52;
+  max-width:51ch
+}
+
+.accion,
+.fuente {
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  min-height:48px;
+  text-decoration:none;
+  font-size:14px
+}
+
+.accion {
+  padding:11px 18px;
+  background:var(--color-acento);
+  border:1px solid var(--color-acento);
+  color:var(--color-fondo)
+}
+
+.fuente {
+  color:var(--color-acento);
+  border-bottom:1px solid currentColor
+}
+
+.inicio,
+.pagina,
+.valoracion {
+  max-width:var(--ancho);
+  margin:auto;
+  padding:88px var(--margen) 112px
+}
+
+.portada {
+  display:grid;
+  grid-template-columns:minmax(0,42fr) minmax(0,58fr);
+  grid-template-areas:'voz foto' 'bajada foto';
+  align-items:center;
+  column-gap:clamp(34px,5vw,88px)
+}
+
+.voz-portada {
+  grid-area:voz;
+  align-self:end
+}
+
+.retrato-film {
+  grid-area:foto;
+  position:relative;
+  margin:0
+}
+
+.retrato-film .cartel,
+.retrato-film video {
+  width:100%;
+  aspect-ratio:4/5;
+  height:auto;
+  object-fit:cover;
+  object-position:50% 35%
+}
+
+.retrato-film video {
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .18s
+}
+
+.retrato-film.reproduciendo video {
+  opacity:1
+}
+
+.retrato-film figcaption,
+figcaption {
+  margin-top:12px;
+  font-size:12px;
+  line-height:1.4;
+  color:var(--color-secundario)
+}
+
+.control-recorrido {
+  min-height:44px;
+  margin-top:16px;
+  padding:8px 0;
+  border:0;
+  border-bottom:1px solid var(--color-acento);
+  background:transparent;
+  color:var(--color-acento);
+  font-size:13px
+}
+
+.estado-recorrido {
+  min-height:1.4em;
+  margin:8px 0 0;
+  font-size:12px;
+  color:var(--color-secundario)
+}
+
+.bajada-portada {
+  grid-area:bajada;
+  align-self:start;
+  padding-top:36px
+}
+
+.criterio-editorial,
+.formacion-portada,
+.forbes-portada {
+  display:grid;
+  grid-template-columns:minmax(130px,23%) 1fr;
+  gap:clamp(30px,7vw,112px);
+  padding:112px 0;
+  border-top:1px solid var(--color-borde)
+}
+
+.criterio-editorial .lectura {
+  max-width:680px
+}
+
+.formacion-portada {
+  grid-template-columns:35% 1fr;
+  align-items:center
+}
+
+.formacion-portada .documento {
+  margin:0
+}
+
+.forbes-portada {
+  grid-template-columns:1fr;
+  align-items:center
+}
+
+.forbes-portada .retrato-prensa {
+  margin:0
+}
+
+.retrato-prensa img {
+  width:100%;
+  aspect-ratio:1400/2110;
+  height:auto;
+  object-fit:cover
+}
+
+.apertura {
+  display:grid;
+  grid-template-columns:minmax(140px,23%) 1fr;
+  gap:clamp(30px,7vw,112px);
+  padding-bottom:84px
+}
+
+.margen-editorial {
+  padding-top:12px
+}
+
+.voz {
+  max-width:750px
+}
+
+.lectura {
+  max-width:680px
+}
+
+.imagen {
+  margin:0
+}
+
+.imagen img {
+  width:100%;
+  aspect-ratio:4/5;
+  height:auto;
+  object-fit:cover;
+  object-position:50% 35%
+}
+
+.recorte-documental {
+  aspect-ratio:720/530;
+  overflow:hidden
+}
+
+.recorte-documental img {
+  width:100%;
+  max-width:none;
+  height:auto
+}
+
+blockquote {
+  max-width:730px;
+  margin:0;
+  font-size:clamp(37px,3.8vw,58px);
+  line-height:1.16
+}
+
+.pagina-resenas {
+  max-width:850px
+}
+
+.pagina-resenas .apertura {
+  padding:44px;
+  border:1px solid var(--color-borde)
+}
+
+.pagina-resenas .apertura .voz {
+  max-width:520px
+}
+
+.pagina-aviso-de-privacidad {
+  max-width:860px
+}
+
+.pagina-aviso-de-privacidad .apertura {
+  gap:42px
+}
+
+.pagina-aviso-de-privacidad h2 {
+  font-size:34px
+}
+
+.prototipo-inversion {
+  max-width:490px;
+  margin-left:auto;
+  padding:34px 0;
+  border-top:1px solid var(--color-borde);
+  border-bottom:1px solid var(--color-borde)
+}
+
+.prototipo-inversion fieldset {
+  border:0;
+  padding:0;
+  margin:0
+}
+
+.prototipo-inversion legend {
+  font-size:34px;
+  margin-bottom:26px
+}
+
+.prototipo-inversion label {
+  display:flex;
+  min-height:58px;
+  align-items:center;
+  gap:12px;
+  border-top:1px solid var(--color-superficie)
+}
+
+.prototipo-inversion input {
+  width:20px;
+  height:20px;
+  accent-color:var(--color-acento)
+}
+
+.prototipo-inversion button:disabled {
+  background:var(--color-superficie);
+  border-color:var(--color-borde);
+  color:var(--color-secundario)
+}
+
+footer {
+  padding:56px var(--margen);
+  background:var(--color-superficie);
+  border-top:1px solid var(--color-borde)
+}
+
+footer>div {
+  max-width:var(--ancho);
+  margin:auto
+}
+
+.firma-pie {
+  margin:0 0 20px;
+  font:400 30px/1.1 Marcellus,Georgia,serif
+}
+
+.pie-legal {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px 64px;
+  margin-top:54px;
+  font-size:12px;
+  line-height:1.5;
+  color:var(--color-secundario)
+}
+
+.pie-legal p {
+  margin:0
+}
+
+.pie-legal .fuente {
+  min-height:44px;
+  width:max-content;
+  font-size:12px
+}
+
+:focus-visible {
+  outline:2px solid var(--color-foco);
+  outline-offset:4px
+}
+
+@media(max-width:700px) {
+:root {
+  --margen:22px;
+  --cabecera:72px
+}
+
+body {
+  font-size:17px
+}
+
+.cabecera {
+  padding:8px var(--margen)
+}
+
+.autor {
+  font-size:17px
+}
+
+.autor span {
+  font-size:12px;
+  letter-spacing:.08em
+}
+
+.menu {
+  padding-left:0
+}
+
+.menu-texto {
+  display:none
+}
+
+.idioma {
+  padding-right:0;
+  font-size:12px
+}
+
+#menu-principal {
+  left:var(--margen);
+  right:var(--margen);
+  grid-template-columns:1fr;
+  padding:16px
+}
+
+.inicio,
+.pagina,
+.valoracion {
+  padding:54px var(--margen) 74px
+}
+
+.portada {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0
+}
+
+.voz-portada {
+  order:0
+}
+
+.voz-portada h1 {
+  font-size:clamp(40px,12vw,47px);
+  margin-bottom:30px
+}
+
+.retrato-film {
+  order:1;
+  margin:4px 0 28px
+}
+
+.bajada-portada {
+  order:2;
+  padding-top:0
+}
+
+.bajada {
+  font-size:18px
+}
+
+.criterio-editorial,
+.formacion-portada,
+.forbes-portada,
+.apertura {
+  display:block;
+  padding:60px 0
+}
+
+.margen-editorial {
+  padding:0;
+  margin-bottom:24px
+}
+
+.formacion-portada>div:first-child {
+  margin-bottom:32px
+}
+
+.forbes-portada .retrato-prensa {
+  max-width:320px;
+  margin-top:34px
+}
+
+.apertura {
+  padding-bottom:54px
+}
+
+.pagina-resenas .apertura {
+  padding:26px
+}
+
+.pagina-aviso-de-privacidad .apertura {
+  display:block;
+  padding:38px 0
+}
+
+.pagina-aviso-de-privacidad .margen-editorial {
+  margin-bottom:16px
+}
+
+.prototipo-inversion {
+  margin:0;
+  padding:28px 0
+}
+
+.pie-legal {
+  display:block;
+  margin-top:40px
+}
+
+.pie-legal p {
+  margin-bottom:13px
+}
+}
+
+@media(prefers-reduced-motion:reduce) {
+html {
+  scroll-behavior:auto
+}
+
+.retrato-film video {
+  transition:none
+}
+}
+
+.inicio,
+.pagina,
+.valoracion {
+  width:100%
+}
+
+.voz-portada,
+.bajada-portada,
+.retrato-film {
+  min-width:0
+}
+
+.portada {
+  padding-bottom:88px
+}
+
+.autor {
+  color:var(--color-tinta)
+}
+
+.accion:hover {
+  background:var(--color-acento-activo)
+}
+
+.fuente:hover {
+  color:var(--color-acento-activo)
+}
+
+.formacion-portada {
+  grid-template-columns:minmax(0,60fr) minmax(0,40fr);
+  column-gap:72px
+}
+
+.documento {
+  margin:0;
+  min-width:0
+}
+
+.documento img {
+  width:100%;
+  height:auto
+}
+
+.trayectoria-pliego {
+  display:grid;
+  grid-template-columns:minmax(0,36fr) minmax(0,64fr);
+  gap:80px;
+  align-items:start
+}
+
+.trayectoria-relato section {
+  padding:0 0 56px
+}
+
+.trayectoria-relato section+section {
+  border-top:1px solid var(--color-borde);
+  padding-top:44px
+}
+
+.titulo-profesional {
+  display:grid;
+  grid-template-columns:34% 1fr;
+  gap:64px;
+  align-items:start;
+  padding:36px 0 64px;
+  border-bottom:1px solid var(--color-borde)
+}
+
+.titulo-profesional h2,
+.registro-texto h2 {
+  font-size:38px
+}
+
+.registro-documental {
+  display:grid;
+  grid-template-columns:minmax(0,34fr) minmax(0,66fr);
+  gap:64px;
+  padding:68px 0;
+  border-bottom:1px solid var(--color-borde);
+  align-items:start
+}
+
+.registro-texto p {
+  font-size:17px
+}
+
+.formacion-continua {
+  padding:68px 0 0
+}
+
+.formacion-entrada {
+  display:flex;
+  gap:40px;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:40px
+}
+
+.formacion-entrada p {
+  font-size:13px;
+  color:var(--color-secundario)
+}
+
+.cursos-documentados {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:56px
+}
+
+.cursos-documentados article>p {
+  min-height:112px;
+  font-size:17px
+}
+
+.manifiesto {
+  padding:12px 0 76px;
+  max-width:900px
+}
+
+.manifiesto blockquote {
+  max-width:none;
+  font-size:clamp(48px,5vw,76px)
+}
+
+.secuencia-metodo {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:42px;
+  border-top:1px solid var(--color-borde);
+  padding:48px 0 76px
+}
+
+.paso-metodo h2 {
+  font-size:32px
+}
+
+.paso-metodo blockquote {
+  font-size:30px;
+  line-height:1.24
+}
+
+.notas-practica {
+  display:grid;
+  grid-template-columns:minmax(0,34fr) minmax(0,66fr);
+  gap:64px;
+  border-top:1px solid var(--color-borde);
+  padding-top:68px
+}
+
+.notas-practica h3:first-child {
+  margin-top:0
+}
+
+.cierre-lectura {
+  display:flex;
+  align-items:flex-start;
+  gap:24px 40px;
+  flex-wrap:wrap;
+  padding-top:56px
+}
+
+.cierre-lectura>p {
+  flex-basis:100%;
+  margin:0
+}
+
+.publicacion-destacada {
+  display:grid;
+  grid-template-columns:minmax(0,34fr) minmax(0,66fr);
+  gap:80px;
+  align-items:center
+}
+
+.publicacion-destacada .retrato-prensa {
+  margin:0
+}
+
+.publicacion-destacada h2 {
+  font-size:clamp(44px,5.2vw,72px)
+}
+
+.fuentes-publicas {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:64px;
+  border-top:1px solid var(--color-borde);
+  padding-top:56px;
+  margin-top:72px
+}
+
+.fuentes-publicas h2 {
+  font-size:38px
+}
+
+.fuentes-publicas .fuente {
+  margin-right:20px
+}
+
+.pagina-resenas {
+  max-width:1080px
+}
+
+.pagina-resenas .apertura {
+  padding:0 0 54px;
+  border:0
+}
+
+.tarjeta-google {
+  margin-left:calc(23% + 60px);
+  padding:40px;
+  background:var(--color-superficie);
+  border-top:1px solid var(--color-borde)
+}
+
+.nota-google {
+  font-size:20px
+}
+
+.nota-google span {
+  display:block;
+  font:400 84px/1.2 Marcellus,Georgia,serif;
+  margin-bottom:16px
+}
+
+.tarjeta-google>p:nth-child(2) {
+  font-size:13px;
+  color:var(--color-secundario)
+}
+
+.concierges {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:44px;
+  padding:44px 0;
+  border-top:1px solid var(--color-borde);
+  border-bottom:1px solid var(--color-borde)
+}
+
+.concierges p {
+  font:400 27px/1.35 Marcellus,Georgia,serif;
+  margin:0
+}
+
+.contacto-local {
+  display:grid;
+  grid-template-columns:34% 1fr;
+  gap:64px;
+  padding-top:56px
+}
+
+.contacto-local .fuente {
+  margin:0 28px 20px 0
+}
+
+.pagina-aviso-de-privacidad {
+  max-width:1200px
+}
+
+.pagina-aviso-de-privacidad .apertura {
+  grid-template-columns:150px minmax(0,1fr);
+  padding:0 0 70px
+}
+
+.texto-legal {
+  max-width:640px;
+  margin-left:auto
+}
+
+.texto-legal section {
+  padding:32px 0;
+  border-top:1px solid var(--color-borde)
+}
+
+.texto-legal h2 {
+  font-size:32px
+}
+
+.valoracion {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:84px;
+  align-items:start
+}
+
+.valoracion .apertura {
+  display:block;
+  padding:0
+}
+
+.valoracion .margen-editorial {
+  margin-bottom:32px
+}
+
+.valoracion h1 {
+  font-size:clamp(42px,4.5vw,64px)
+}
+
+.prototipo-inversion {
+  margin:0;
+  padding-top:36px
+}
+
+.pie-legal {
+  margin-top:48px
+}
+
+.pie-legal .fuente {
+  max-width:100%
+}
+
+#menu-principal {
+  max-height:calc(100svh - var(--cabecera) - 24px);
+  overflow:auto
+}
+
+.control-recorrido {
+  position:relative;
+  z-index:1
+}
+
+@media(max-width:900px) {
+.trayectoria-pliego,
+.registro-documental,
+.publicacion-destacada {
+  gap:40px
+}
+
+.secuencia-metodo {
+  gap:24px
+}
+
+.paso-metodo h2 {
+  font-size:27px
+}
+
+.paso-metodo blockquote {
+  font-size:27px
+}
+
+.formacion-portada {
+  column-gap:36px
+}
+
+.apertura {
+  gap:40px
+}
+
+.valoracion {
+  gap:40px
+}
+}
+
+@media(max-width:700px) {
+.portada {
+  padding-bottom:60px
+}
+
+.formacion-portada,
+.trayectoria-pliego,
+.titulo-profesional,
+.registro-documental,
+.secuencia-metodo,
+.notas-practica,
+.publicacion-destacada,
+.fuentes-publicas,
+.concierges,
+.contacto-local,
+.valoracion {
+  display:block
+}
+
+.inicio,
+.pagina,
+.valoracion {
+  padding-top:34px
+}
+
+.portada .voz-portada {
+  align-self:stretch
+}
+
+.voz-portada h1 {
+  max-width:16ch
+}
+
+.retrato-film {
+  margin-bottom:30px
+}
+
+.apertura {
+  padding:0 0 50px
+}
+
+.apertura h1 {
+  font-size:44px
+}
+
+.margen-editorial {
+  margin-bottom:22px
+}
+
+.margen-editorial .firma {
+  margin:16px 0
+}
+
+.formacion-portada {
+  padding:54px 0
+}
+
+.formacion-portada h2 {
+  font-size:36px
+}
+
+.forbes-portada h2 {
+  font-size:42px
+}
+
+.criterio-editorial {
+  padding:54px 0
+}
+
+.criterio-editorial h2 {
+  font-size:38px
+}
+
+.trayectoria-pliego>.imagen {
+  margin-bottom:44px
+}
+
+.trayectoria-relato h2 {
+  font-size:36px
+}
+
+.titulo-profesional {
+  padding:16px 0 34px
+}
+
+.titulo-profesional h2,
+.registro-texto h2 {
+  font-size:34px
+}
+
+.registro-documental {
+  padding:40px 0
+}
+
+.registro-texto {
+  margin-bottom:28px
+}
+
+.formacion-continua {
+  padding-top:44px
+}
+
+.formacion-entrada {
+  display:block;
+  margin-bottom:28px
+}
+
+.formacion-entrada h2 {
+  font-size:36px
+}
+
+.cursos-documentados {
+  display:block
+}
+
+.cursos-documentados article+article {
+  margin-top:44px
+}
+
+.cursos-documentados article>p {
+  min-height:0
+}
+
+.manifiesto {
+  padding:0 0 40px
+}
+
+.manifiesto blockquote {
+  font-size:43px
+}
+
+.secuencia-metodo {
+  padding:30px 0 12px
+}
+
+.paso-metodo {
+  padding-bottom:34px
+}
+
+.paso-metodo h2 {
+  font-size:30px;
+  margin-bottom:16px
+}
+
+.paso-metodo blockquote {
+  font-size:30px
+}
+
+.notas-practica {
+  padding-top:40px
+}
+
+.notas-practica h2 {
+  font-size:36px;
+  margin-bottom:36px
+}
+
+.cierre-lectura {
+  padding-top:36px;
+  gap:24px
+}
+
+.publicacion-destacada .retrato-prensa {
+  max-width:300px;
+  margin-bottom:36px
+}
+
+.publicacion-destacada h2 {
+  font-size:46px
+}
+
+.fuentes-publicas {
+  margin-top:48px;
+  padding-top:38px
+}
+
+.fuentes-publicas section+section {
+  margin-top:38px
+}
+
+.fuentes-publicas h2 {
+  font-size:32px
+}
+
+.tarjeta-google {
+  margin:0;
+  padding:30px 26px
+}
+
+.nota-google span {
+  font-size:74px
+}
+
+.concierges {
+  padding:30px 0
+}
+
+.concierges p {
+  font-size:26px;
+  padding:14px 0
+}
+
+.contacto-local {
+  padding-top:38px
+}
+
+.contacto-local h2 {
+  font-size:36px
+}
+
+.pagina-aviso-de-privacidad .apertura {
+  display:block;
+  padding:0 0 38px
+}
+
+.texto-legal {
+  margin:0;
+  max-width:none
+}
+
+.texto-legal h2 {
+  font-size:30px
+}
+
+.valoracion .apertura {
+  padding-bottom:38px
+}
+
+.valoracion h1 {
+  font-size:44px
+}
+
+.valoracion .margen-editorial {
+  margin-bottom:24px
+}
+
+.prototipo-inversion {
+  max-width:none
+}
+}
+
+@media(max-width:700px) {
+.menu-texto {
+  display:inline
+}
+
+.autor span {
+  font-size:12px
+}
+
+.voz-portada h1 {
+  font-size:42px;
+  text-wrap:pretty
+}
+}
+
+
+.indice-procedimientos {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 36px;
+  padding:0 0 32px;
+}
+.indice-procedimientos a {
+  min-width:44px;
+  display:inline-flex;
+  min-height:44px;
+  align-items:center;
+  color:var(--color-acento);
+  font-size:14px;
+}
+.familia-procedimiento {
+  display:grid;
+  grid-template-columns:minmax(0,32fr) minmax(0,68fr);
+  gap:64px;
+  padding:52px 0;
+  border-top:1px solid var(--color-borde);
+}
+.familia-procedimiento h2 {
+  font-size:38px;
+}
+.familia-procedimiento header p {
+  font-size:16px;
+  max-width:34ch;
+}
+.fichas-procedimientos {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:44px 36px;
+}
+.ficha-procedimiento h3 {
+  margin:0 0 14px;
+  font-size:29px;
+}
+.ficha-procedimiento p {
+  margin:0;
+  font-size:17px;
+}
+.familia-procedimiento:has(.fichas-procedimientos:empty) {
+  display:block;
+}
+.familia-procedimiento:has(.fichas-procedimientos:empty) header {
+  display:grid;
+  grid-template-columns:minmax(0,32fr) minmax(0,68fr);
+  gap:64px;
+}
+.familia-procedimiento:has(.fichas-procedimientos:empty) header p {
+  max-width:55ch;
+}
+[id] {
+  scroll-margin-top:calc(var(--cabecera) + 76px);
+}
+@media(max-width:700px) {
+  .familia-procedimiento,
+  .familia-procedimiento:has(.fichas-procedimientos:empty) header,
+  .fichas-procedimientos { display:block }
+  .familia-procedimiento { padding:38px 0 }
+  .familia-procedimiento header p { max-width:none }
+  .ficha-procedimiento { padding:24px 0 6px }
+  .ficha-procedimiento h3 { font-size:29px }
+  .ficha-procedimiento p { font-size:17px }
+  .indice-procedimientos { gap:4px 20px; padding-bottom:24px }
+}
+
+
+:root { --cabecera:126px }
+.cabecera { row-gap:4px; padding-bottom:0 }
+.accesos {
+  grid-column:1/-1;
+  display:flex;
+  justify-content:center;
+  gap:42px;
+  border-top:1px solid var(--color-superficie);
+}
+.accesos a {
+  display:flex;
+  min-height:44px;
+  align-items:center;
+  font-size:12px;
+  text-decoration:none;
+}
+.accesos a:last-child,
+.accesos a[aria-current=page] { color:var(--color-acento) }
+.accesos a:last-child { text-decoration:underline }
+.grupo-menu { padding:0 10px }
+.grupo-menu>p { font:400 22px/1.2 Marcellus,Georgia,serif; margin:8px 12px 16px }
+.presentacion-enlaces { display:flex; gap:12px 24px; flex-wrap:wrap }
+.procedimientos-portada { border-top:1px solid var(--color-borde); padding:76px 0 42px }
+.encabezado-procedimientos { display:grid; grid-template-columns:23% 1fr; gap:clamp(30px,7vw,112px); align-items:baseline }
+.encabezado-procedimientos h2 { max-width:630px }
+.seleccion-procedimientos { display:grid; grid-template-columns:1fr 1fr; gap:0 56px; margin:26px 0 32px }
+.seleccion-procedimientos a {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:22px;
+  min-height:102px;
+  border-bottom:1px solid var(--color-borde);
+  text-decoration:none;
+  font:400 clamp(25px,2.35vw,34px)/1.2 Marcellus,Georgia,serif;
+}
+.seleccion-procedimientos a>span:last-child { color:var(--color-acento) }
+.seleccion-procedimientos a:hover>span:first-child { text-decoration:underline }
+.dato-formacion { font-size:14px; color:var(--color-secundario) }
+.valoracion-portada { display:grid; grid-template-columns:38% 1fr; gap:64px; padding:68px 0 0; border-top:1px solid var(--color-borde) }
+.valoracion-portada .fuente { margin-left:24px }
+@media(max-width:700px) {
+ :root { --cabecera:116px }
+ .accesos { gap:28px }
+ .accesos a { font-size:12px }
+ .grupo-menu { padding:0 }
+ .grupo-menu>p { margin:20px 12px 12px; font-size:19px }
+ .grupo-menu:first-child>p { margin-top:4px }
+ .procedimientos-portada { padding:46px 0 24px }
+ .encabezado-procedimientos,
+ .seleccion-procedimientos,
+ .valoracion-portada { display:block }
+ .encabezado-procedimientos h2 { font-size:38px }
+ .seleccion-procedimientos { margin:18px 0 24px }
+ .seleccion-procedimientos a { min-height:78px; padding:17px 0; font-size:27px }
+ .valoracion-portada { padding:44px 0 0 }
+ .valoracion-portada h2 { font-size:38px }
+}
+
+.salto {
+ position:fixed;
+ top:12px;
+ left:12px;
+ z-index:30;
+ min-height:44px;
+ padding:10px 16px;
+ transform:translateY(-150%);
+ background:var(--color-fondo);
+ color:var(--color-acento);
+}
+.salto:focus { transform:translateY(0) }
+
+.autor { min-width:0 }
+.autor span { line-height:1.2; white-space:normal; max-width:260px }
+@media(max-width:700px) { .autor span { max-width:190px; letter-spacing:.04em } }
+
+.idioma { display:flex; align-items:center; justify-content:flex-end; text-decoration:none }
+.idioma-aviso { font-size:12px; margin:0; grid-column:1/-1; text-align:right }
+
+@media (min-width:701px) { .forbes-portada { grid-template-columns:1fr minmax(0,360px) } }
+
+/* Salas de la práctica — diptico proporcional (21-sep-2026) */
+.salas-procedimientos {
+  display:grid;
+  grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);
+  gap:clamp(18px,2.2vw,32px);
+  align-items:start;
+  margin:0 0 clamp(52px,6vw,88px)
+}
+
+.salas-procedimientos .sala {
+  margin:0
+}
+
+.salas-procedimientos .sala img {
+  width:100%;
+  height:auto
+}
+
+@media (max-width:900px) {
+  .salas-procedimientos {
+    grid-template-columns:1fr;
+    gap:26px;
+    margin-bottom:44px
+  }
+  .salas-procedimientos .sala-intima img {
+    aspect-ratio:4/5;
+    object-fit:cover;
+    object-position:50% 42%
+  }
+}
+
+/* Fotografía real del doctor por toda la portada — 21-sep-2026 */
+.retrato-metodo{margin:0}
+.retrato-metodo img{width:100%;height:auto;display:block}
+.clinica-portada{display:grid;grid-template-columns:minmax(130px,23%) 1fr;gap:clamp(30px,7vw,112px);padding:112px 0;border-top:1px solid var(--color-borde)}
+.instalaciones{grid-column:1/-1;display:grid;grid-template-columns:minmax(130px,23%) 1fr;gap:clamp(30px,7vw,112px);align-items:start;margin-top:clamp(26px,3vw,44px)}
+.instalacion{margin:0}
+.instalacion img{width:100%;height:auto;display:block}
+@media (min-width:701px){
+.criterio-editorial{grid-template-columns:minmax(130px,23%) 1fr minmax(0,300px);gap:clamp(30px,4vw,72px)}
+.criterio-editorial .lectura{align-self:center}
+.retrato-metodo{align-self:center}
+}
+@media (max-width:700px){
+.retrato-metodo{max-width:300px;margin-top:32px}
+.clinica-portada{display:block;padding:60px 0}
+.instalaciones{grid-template-columns:1fr;gap:26px;margin-top:26px}
+}
