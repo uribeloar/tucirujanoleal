@@ -1723,3 +1723,15 @@ html {
   .marca img { height:22px }
   #menu-principal { width:100vw; max-width:100vw }
 }
+
+/* P-22 · franja de certificaciones internacionales (portada, acerca de mí, medios) */
+.banda-sellos{background:var(--color-oscuro);padding:44px var(--margen);margin:40px 0 0}
+.banda-sellos>h2{color:var(--color-sobre-oscuro);margin:0 0 28px;font-size:clamp(21px,2.3vw,28px);font-weight:400;letter-spacing:.01em}
+.fila-sellos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 22px;align-items:start}
+.fila-sellos li{margin:0}
+.fila-sellos figure{margin:0;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.fila-sellos img{box-sizing:border-box;display:block;width:100%;height:88px;padding:16px 0;object-fit:contain;object-position:left center}
+.fila-sellos .sello-alto img{padding:9px 0}
+.fila-sellos figcaption{font-size:12px;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;color:var(--color-sobre-oscuro);opacity:.85}
+.fila-sellos a{display:block;min-height:44px;text-decoration:none}
+@media(min-width:761px){.banda-sellos{padding:62px var(--margen)}.fila-sellos{grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 30px}.fila-sellos img{height:116px;padding:21px 0}.fila-sellos .sello-alto img{padding:5px 0}}
