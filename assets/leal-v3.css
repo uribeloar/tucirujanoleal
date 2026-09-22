@@ -131,7 +131,7 @@ h3 {
   border:0;
   background:transparent;
   color:var(--color-tinta);
-  font-size:12px;
+  font-size:15px;
   letter-spacing:.08em
 }
 
@@ -523,7 +523,8 @@ body {
 }
 
 .menu {
-  padding-left:0
+  padding-left:0;
+  font-size:14px
 }
 
 .menu-texto {
@@ -532,7 +533,7 @@ body {
 
 .idioma {
   padding-right:0;
-  font-size:12px
+  font-size:14px
 }
 
 
@@ -1320,7 +1321,7 @@ html {
   display:flex;
   min-height:44px;
   align-items:center;
-  font-size:12px;
+  font-size:15px;
   text-decoration:none;
 }
 .accesos a:last-child,
@@ -1351,7 +1352,7 @@ html {
 @media(max-width:700px) {
  :root { --cabecera:116px }
  .accesos { gap:28px }
- .accesos a { font-size:12px }
+ .accesos a { font-size:14px }
  .grupo-menu { padding:0 }
  .grupo-menu>p { margin:20px 12px 12px; font-size:19px }
  .grupo-menu:first-child>p { margin-top:4px }
