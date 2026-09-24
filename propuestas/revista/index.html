@@ -1,0 +1,74 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dr. Alejandro Leal · Propuesta B · Revista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--perla:#F7F5F0;--tinta:#1C1C1E;--gris:#6E6A62;--champan:#B8A06A;--linea:#DCD5C6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--perla);color:var(--tinta);font-family:"Inter Tight",system-ui,sans-serif;font-weight:300;line-height:1.6}
+h1,h2,h3{font-family:"Bodoni Moda",serif;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:0}a{color:inherit;text-decoration:none}
+.tag{position:fixed;top:12px;right:12px;z-index:9;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--champan);background:rgba(247,245,240,.85);padding:6px 10px;border:1px solid var(--linea)}
+.cabecera{text-align:center;padding:26px 20px 14px;border-bottom:1px solid var(--tinta)}.cabecera .marca{font-family:"Bodoni Moda",serif;font-size:clamp(28px,7vw,72px);letter-spacing:.14em;text-transform:uppercase;line-height:1}
+.cabecera .sub{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gris);margin-top:10px}
+.hero{position:relative;height:88svh;min-height:520px;background:var(--tinta)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .velo{position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to top,rgba(0,0,0,.35),rgba(0,0,0,0))}
+.hero .texto{position:absolute;left:20px;right:20px;bottom:44px;color:#fff}
+.hero h1{font-size:clamp(34px,7.5vw,92px);line-height:.98;max-width:14ch}.hero .kicker{font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;color:#fff}
+.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:84px;height:84px;border:1px solid #fff;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;background:rgba(0,0,0,.2);cursor:pointer}
+.forbesbar{display:flex;align-items:center;justify-content:center;gap:18px;padding:22px 20px;border-bottom:1px solid var(--linea);font-size:11px;letter-spacing:.26em;text-transform:uppercase}.forbesbar img{height:20px}
+.col{max-width:1100px;margin:0 auto;padding:80px 20px}.num{font-family:"Bodoni Moda",serif;font-size:13px;letter-spacing:.3em;color:var(--champan);margin-bottom:18px}
+h2{font-size:clamp(28px,4.4vw,54px);line-height:1.02}.lead{font-size:clamp(18px,2vw,22px);max-width:44ch;margin:26px 0 0;line-height:1.5}
+.lead::first-letter{font-family:"Bodoni Moda",serif;font-size:3.2em;float:left;line-height:.8;padding:6px 10px 0 0;color:var(--champan)}
+.cols{display:grid;gap:36px;margin-top:40px}@media(min-width:800px){.cols{grid-template-columns:repeat(3,1fr)}}.cols div{border-top:2px solid var(--tinta);padding-top:14px}.cols b{font-family:"Bodoni Moda",serif;text-transform:uppercase;letter-spacing:.06em;font-weight:600;display:block;margin-bottom:6px}.cols p{margin:0;font-size:15px}
+.titulares{border-top:1px solid var(--tinta);margin-top:40px}.tit{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:24px 0;border-bottom:1px solid var(--linea)}
+.tit .n{font-family:"Bodoni Moda",serif;font-size:13px;color:var(--champan);letter-spacing:.2em}.tit h3{font-size:clamp(18px,2.6vw,30px);line-height:1.1}.tit small{display:block;font-family:"Inter Tight";font-weight:300;text-transform:none;letter-spacing:0;font-size:14px;color:var(--gris);margin-top:6px}
+.tit a{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--champan);white-space:nowrap}
+.resultados{display:none;grid-column:1/-1;font-size:15px;margin:0}.tit.abierto .resultados{display:block}
+.medios{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;font-family:"Bodoni Moda",serif;font-size:clamp(18px,2.6vw,28px);text-transform:uppercase;letter-spacing:.1em;padding:50px 20px;border-top:1px solid var(--tinta);border-bottom:1px solid var(--tinta)}
+.btn{display:inline-block;background:var(--tinta);color:#fff;padding:16px 30px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;margin-top:26px}
+.concierge{display:grid;gap:14px;margin-top:26px;font-size:15px}@media(min-width:800px){.concierge{grid-template-columns:repeat(3,1fr)}}.concierge b{font-weight:500;display:block}
+footer{padding:40px 20px;text-align:center;font-size:12px;color:var(--gris);letter-spacing:.08em}footer img{height:26px;display:block;margin:0 auto 14px}
+</style></head><body>
+<span class="tag">Propuesta B · Revista</span>
+<div class="cabecera"><div class="marca">Tucirujanoleal</div><div class="sub"><span>Guadalajara</span><span>Dr. Alejandro Leal</span><span>Edición 2026</span></div></div>
+
+<div class="hero" id="hero">
+  <video id="v" poster="../../media/20-anios-de-experiencia-poster.jpg" preload="none" playsinline controls style="display:block"><source src="../../media/20-anios-de-experiencia.mp4" type="video/mp4"></video>
+  <div class="velo" id="velo"></div>
+  <div class="play" id="play" onclick="document.getElementById('v').play();this.style.display='none';document.getElementById('velo').style.display='none';document.getElementById('tx').style.display='none'">Ver</div>
+  <div class="texto" id="tx"><div class="kicker">Veinte años de práctica</div><h1>Dos décadas de alta cirugía plástica</h1></div>
+</div>
+<a class="forbesbar" href="https://forbes.com.mx/ad-la-creacion-de-liposser-y-la-evolucion-de-la-cirugia-plastica-hacia-la-medicina-de-alto-valor/" target="_blank" rel="noopener"><img src="../../media/logos/forbes-mexico.svg" alt="Forbes"> México y Latam · el artículo</a>
+
+<div class="col">
+  <div class="num">01 · El cirujano</div>
+  <h2>Un modelo que nadie más practica</h2>
+  <p class="lead">El Dr. Alejandro Leal es cirujano plástico, estético y reconstructivo con más de veinte años en Guadalajara. Tomó la estructura de la atención médica venezolana, la unió a la alta cirugía plástica y la vistió con el lenguaje de las casas de lujo. Forbes México y Latam documentó ese modelo.</p>
+  <div class="cols">
+    <div><b>Certificación 2707</b><p>Consejo Mexicano de Cirugía Plástica, Estética y Reconstructiva.</p></div>
+    <div><b>Universidad de Guadalajara</b><p>Especialidad en cirugía plástica.</p></div>
+    <div><b>Top Master · Total Definer</b><p>Definición corporal de alta precisión, con plataformas InMode.</p></div>
+  </div>
+</div>
+
+<div class="col" style="padding-top:0">
+  <div class="num">02 · Procedimientos</div>
+  <h2>Aquí no se vende. Se enseña.</h2>
+  <div class="titulares">
+    <div class="tit"><span class="n">I</span><h3>Un abdomen que el esfuerzo no logró definir<small>Lipo Total Definer · mujeres y hombres</small></h3><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+    <div class="tit"><span class="n">II</span><h3>Piel que cede cuando la cirugía terminó<small>Lipo sin flacidez</small></h3><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+    <div class="tit"><span class="n">III</span><h3>El cuerpo después de la maternidad<small>Mommy Makeover Total Face and Body</small></h3><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+    <div class="tit"><span class="n">IV</span><h3>Flacidez en rostro y cuello<small>Rejuvenecimiento facial</small></h3><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+  </div>
+</div>
+
+<div class="medios"><span>Forbes México y Latam</span><span>Gente Bien Jalisco</span><span>Players of Life</span></div>
+
+<div class="col">
+  <div class="num">03 · Locación</div>
+  <h2>Providencia, Guadalajara</h2>
+  <p class="lead" style="margin-top:18px">Calle Ottawa 1483. La valoración es presencial y la coordina una concierge médica.</p>
+  <div class="concierge"><div><b>Geraldine Cagua</b>33 2350 5078</div><div><b>Laura Torres</b>33 2176 8755</div><div><b>Shadia Salomón</b>33 2237 5780</div></div>
+  <a class="btn" href="https://wa.me/523323505078?text=Buen%20d%C3%ADa.%20Vengo%20del%20sitio%20del%20Dr.%20Leal%20y%20quisiera%20reservar%20una%20valoraci%C3%B3n." target="_blank" rel="noopener">Reservar valoración</a>
+</div>
+<footer><img src="../../media/logos/permiso-cofepris.svg" alt="COFEPRIS">Permiso de publicidad COFEPRIS · Cirugía plástica, estética y reconstructiva · Publicidad dirigida a población general</footer>
+</body></html>

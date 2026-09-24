@@ -1,0 +1,89 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dr. Alejandro Leal · Propuesta C · Joyería</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#F7F5F0;--fondo2:#FFFFFF;--tinta:#1C1C1E;--gris:#6E6A62;--champan:#B8A06A;--linea:#E4DED2}
+:root[data-theme="oscuro"]{--fondo:#1C1C1E;--fondo2:#24242A;--tinta:#F4F1EA;--gris:#A9A49A;--linea:#3A3A40}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--fondo);color:var(--tinta);font-family:"Inter Tight",system-ui,sans-serif;font-weight:300;line-height:1.6;transition:background .4s,color .4s}
+h1,h2,h3{font-family:"Bodoni Moda",serif;font-weight:400;text-transform:uppercase;letter-spacing:.12em;margin:0;text-align:center}a{color:inherit;text-decoration:none}
+.tag{position:fixed;top:12px;left:12px;z-index:9;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--champan);background:var(--fondo);padding:6px 10px;border:1px solid var(--linea)}
+.modo{position:fixed;top:12px;right:12px;z-index:9;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--champan);background:var(--fondo);padding:6px 10px;border:1px solid var(--champan);cursor:pointer}
+header{text-align:center;padding:64px 20px 26px}.marca{font-family:"Bodoni Moda",serif;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--champan)}
+.orn{width:1px;height:34px;background:var(--champan);margin:18px auto 0}
+.carrusel{position:relative;height:72svh;min-height:460px;overflow:hidden;background:var(--fondo2)}
+.pista{display:flex;height:100%;transition:transform .9s cubic-bezier(.77,0,.18,1)}.pista figure{flex:0 0 100%;margin:0;position:relative}
+.pista img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+.pista figcaption{position:absolute;inset:auto 0 0 0;padding:0 20px 40px;text-align:center;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.35),rgba(0,0,0,0));padding-top:80px}
+.pista figcaption h1{font-size:clamp(24px,4.6vw,46px);color:#fff;line-height:1.15}.pista figcaption p{margin:12px 0 0;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+.puntos{display:flex;justify-content:center;gap:12px;padding:18px}.puntos i{width:6px;height:6px;border:1px solid var(--champan);border-radius:50%;display:block}.puntos i.on{background:var(--champan)}
+section{padding:80px 20px;max-width:960px;margin:0 auto;text-align:center}.eyebrow{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--champan);margin:0 0 18px}
+h2{font-size:clamp(22px,3.4vw,36px);line-height:1.2}p.cuerpo{font-size:17px;max-width:46ch;margin:22px auto 0}
+.linea{width:56px;height:1px;background:var(--champan);margin:26px auto}
+.cert{display:grid;gap:26px;margin-top:40px}@media(min-width:800px){.cert{grid-template-columns:repeat(4,1fr)}}.cert div{font-size:14px}.cert b{display:block;font-family:"Bodoni Moda",serif;text-transform:uppercase;letter-spacing:.1em;font-weight:400;margin-bottom:6px}
+.zonas{display:flex;justify-content:center;gap:0;margin-top:34px;border:1px solid var(--champan);width:max-content;max-width:100%;margin-left:auto;margin-right:auto}.zonas button{background:none;border:0;padding:12px 26px;font:inherit;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--tinta);cursor:pointer}.zonas button.on{background:var(--champan);color:#fff}
+.vitrina{display:grid;gap:18px;margin-top:34px}@media(min-width:800px){.vitrina{grid-template-columns:1fr 1fr}}.vitrina>div{display:none}.vitrina>div.on{display:grid;gap:18px}@media(min-width:800px){.vitrina>div.on{grid-template-columns:1fr 1fr}}
+.pieza{background:var(--fondo2);border:1px solid var(--linea);padding:40px 26px;text-align:center}.pieza small{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gris)}.pieza h3{font-size:19px;letter-spacing:.06em;margin:14px 0 6px;line-height:1.25}.pieza em{font-style:normal;font-size:14px;color:var(--gris)}
+.pieza a{display:inline-block;margin-top:20px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--champan);border-bottom:1px solid var(--champan);padding-bottom:4px}.resultados{display:none;margin:16px 0 0;font-size:14px}.pieza.abierto .resultados{display:block}
+.btn{display:inline-block;border:1px solid var(--champan);background:var(--champan);color:#fff;padding:15px 34px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-top:28px}
+.concierge{display:grid;gap:16px;margin-top:28px;font-size:15px}@media(min-width:800px){.concierge{grid-template-columns:repeat(3,1fr)}}.concierge b{font-weight:500;display:block}
+.forbes{display:inline-flex;align-items:center;gap:12px;margin-top:26px;font-size:11px;letter-spacing:.24em;text-transform:uppercase}.forbes img{height:15px}:root[data-theme="oscuro"] .forbes img,:root[data-theme="oscuro"] footer img{filter:invert(1)}
+footer{border-top:1px solid var(--linea);padding:40px 20px;text-align:center;font-size:12px;color:var(--gris);letter-spacing:.08em}footer img{height:26px;display:block;margin:0 auto 14px}
+</style></head><body>
+<span class="tag">Propuesta C · Joyería</span>
+<button class="modo" onclick="var r=document.documentElement;r.dataset.theme=r.dataset.theme==='oscuro'?'':'oscuro';this.textContent=r.dataset.theme?'Modo claro':'Modo oscuro'">Modo oscuro</button>
+<header><div class="marca">Tucirujanoleal</div><div class="orn"></div></header>
+
+<div class="carrusel"><div class="pista" id="pista">
+  <figure><img src="../../media/dr-leal-retrato-19ago.jpg" alt="Dr. Alejandro Leal"><figcaption><h1>Precisión hecha a medida</h1><p>Dr. Alejandro Leal · Cirujano plástico</p></figcaption></figure>
+  <figure><img src="../../media/dr-leal-muro-dorado-forbes.jpg" alt="Forbes México y Latam"><figcaption><h1>Documentado por Forbes</h1><p>México y Latam</p></figcaption></figure>
+  <figure><img src="../../media/dr-leal-consultorio-19ago.jpg" alt="Providencia, Guadalajara"><figcaption><h1>Providencia, Guadalajara</h1><p>Locación</p></figcaption></figure>
+</div></div>
+<div class="puntos" id="puntos"><i class="on"></i><i></i><i></i></div>
+
+<section>
+  <p class="eyebrow">El cirujano</p>
+  <h2>Veinte años que no se cuentan: se ven</h2>
+  <div class="linea"></div>
+  <p class="cuerpo">El Dr. Alejandro Leal es cirujano plástico, estético y reconstructivo con más de dos décadas de práctica en Guadalajara. Unió la estructura de la atención médica venezolana con la alta cirugía plástica y el lenguaje de las casas de lujo. Forbes México y Latam documentó ese modelo.</p>
+  <a class="forbes" href="https://forbes.com.mx/ad-la-creacion-de-liposser-y-la-evolucion-de-la-cirugia-plastica-hacia-la-medicina-de-alto-valor/" target="_blank" rel="noopener"><img src="../../media/logos/forbes-mexico.svg" alt="Forbes"> leer el artículo</a>
+  <div class="cert">
+    <div><b>Consejo Mexicano</b>Cirugía Plástica, Estética y Reconstructiva · Certificación 2707</div>
+    <div><b>Universidad de Guadalajara</b>Especialidad en cirugía plástica</div>
+    <div><b>Top Master</b>Técnica Total Definer</div>
+    <div><b>InMode Expert</b>Radiofrecuencia de alta potencia</div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Colección de procedimientos</p>
+  <h2>Por zona, como una joyería</h2>
+  <div class="zonas"><button class="on" onclick="zona(0,this)">Cuerpo</button><button onclick="zona(1,this)">Rostro</button></div>
+  <div class="vitrina" id="vitrina">
+    <div class="on">
+      <div class="pieza"><small>Contorno corporal</small><h3>Un abdomen que el esfuerzo no logró definir</h3><em>Lipo Total Definer · mujeres y hombres</em><br><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+      <div class="pieza"><small>Contorno corporal</small><h3>Piel que cede cuando la cirugía terminó</h3><em>Lipo sin flacidez</em><br><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+      <div class="pieza"><small>Contorno corporal</small><h3>El cuerpo después de la maternidad</h3><em>Mommy Makeover Total Face and Body</em><br><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+      <div class="pieza"><small>Contorno corporal</small><h3>Una silueta nueva sin volver a empezar</h3><em>New Younger Generation</em><br><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+    </div>
+    <div>
+      <div class="pieza"><small>Rejuvenecimiento facial</small><h3>Flacidez en rostro y cuello</h3><em>Rejuvenecimiento facial</em><br><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+      <div class="pieza"><small>Rejuvenecimiento facial</small><h3>La mirada cansada que el descanso no quita</h3><em>Celebrity Face</em><br><a href="#" onclick="this.parentNode.classList.toggle('abierto');return false">Ver resultados</a><p class="resultados">¿Le gustaría ver antes y después reales? Se muestran en la valoración, con el mismo ángulo en cada par.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Locación</p>
+  <h2>Providencia, Guadalajara</h2>
+  <div class="linea"></div>
+  <p class="cuerpo">Calle Ottawa 1483. La valoración es presencial y la coordina una concierge médica.</p>
+  <div class="concierge"><div><b>Geraldine Cagua</b>33 2350 5078</div><div><b>Laura Torres</b>33 2176 8755</div><div><b>Shadia Salomón</b>33 2237 5780</div></div>
+  <a class="btn" href="https://wa.me/523323505078?text=Buen%20d%C3%ADa.%20Vengo%20del%20sitio%20del%20Dr.%20Leal%20y%20quisiera%20reservar%20una%20valoraci%C3%B3n." target="_blank" rel="noopener">Reservar valoración</a>
+</section>
+<footer><img src="../../media/logos/permiso-cofepris.svg" alt="COFEPRIS">Permiso de publicidad COFEPRIS · Cirugía plástica, estética y reconstructiva · Publicidad dirigida a población general</footer>
+<script>
+var i=0,p=document.getElementById('pista'),d=document.querySelectorAll('#puntos i');
+setInterval(function(){i=(i+1)%3;p.style.transform='translateX(-'+(i*100)+'%)';d.forEach(function(x,k){x.classList.toggle('on',k===i)})},4200);
+function zona(n,b){document.querySelectorAll('.zonas button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.querySelectorAll('#vitrina>div').forEach(function(x,k){x.classList.toggle('on',k===n)})}
+</script>
+</body></html>
