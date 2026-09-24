@@ -361,3 +361,6 @@ details.mas > summary:focus-visible{outline:2px solid var(--angel); outline-offs
 }
 /* pastillas largas: que envuelvan en vez de desbordar la tarjeta */
 .pz-cabeza .pastilla{white-space:normal;max-width:100%;line-height:1.35;text-align:left}
+
+/* lo que entra deslizando desde un lado no debe abrir scroll horizontal */
+html{overflow-x:clip}
