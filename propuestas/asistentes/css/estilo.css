@@ -114,7 +114,7 @@ section[data-provisional]:empty::before{content:attr(data-provisional); display:
 
 /* 1 · portada: video con el titular dentro */
 .hero{position:relative; min-height:92vh; display:grid; align-items:end; overflow:hidden; padding:0; background:var(--fondo) url(../img/portada.jpg) center/cover no-repeat}
-@media(max-width:700px){.hero{background-image:url(../img/portada-375.jpg)}}
+@media(max-width:700px){.hero{background-image:none}}
 .hero canvas{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block}
 .hero .inner{position:relative; z-index:2; max-width:var(--max); margin:0 auto; padding:80px var(--gut) 64px; width:100%}
 @media(max-width:720px){.hero .inner{padding:34px var(--gut) 48px}}
