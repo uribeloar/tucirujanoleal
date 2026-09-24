@@ -4,123 +4,277 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Liposser · Asistentes de concierge y ventas · Habilidades</title>
+<title>Liposser × Hostess — Asistentes: lo que saben hacer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--perla:#FBFAF7;--tinta:#1A1D24;--champan:#B26500;--naranja:#F6A623;--crema:#F3EFE7;--linea:#E6E0D5;--gris:#5F6672;--panel:#FFFFFF}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--perla);color:var(--tinta);font-family:"Manrope",system-ui,sans-serif;font-weight:300;line-height:1.55;-webkit-font-smoothing:antialiased}
-body{padding:0 16px 64px}
-.hoja{max-width:820px;margin:0 auto}
-header{padding:40px 0 28px;border-bottom:1px solid var(--linea)}
-.marca{font-family:"Archivo",sans-serif;letter-spacing:.28em;font-size:13px;text-transform:uppercase;color:#9A5700}
-h1{font-family:"Archivo",sans-serif;font-weight:600;font-size:clamp(28px,6vw,44px);line-height:1.1;margin:14px 0 10px;text-transform:uppercase;letter-spacing:.02em}
-.sub{color:var(--gris);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
-.intro{margin:26px 0 0;font-size:17px;max-width:640px}
-h2{font-family:"Archivo",sans-serif;font-weight:400;font-size:22px;text-transform:uppercase;letter-spacing:.06em;margin:48px 0 6px}
-h2 small{display:block;font-family:"Manrope",sans-serif;font-size:12px;letter-spacing:.14em;color:var(--champan);margin-bottom:6px}
-.nota{color:var(--gris);font-size:15px;margin:0 0 18px;max-width:640px}
-.lista{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.lista li{background:var(--panel);border:1px solid var(--linea);padding:16px 18px;display:grid;grid-template-columns:1fr;gap:6px}
-.lista b{font-weight:500;font-size:16px}
-.lista p{margin:0;font-size:15px}
-.ej{font-style:italic;color:var(--gris)}
-.estado{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
-.estado i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--naranja);display:inline-block;flex:none}
-.ya i{background:var(--naranja);border-color:var(--naranja)}
-.medio i{background:linear-gradient(90deg,var(--naranja) 50%,transparent 50%);border-color:var(--naranja)}
-.falta i{background:transparent}
-.fuente{font-size:12px;color:var(--gris);letter-spacing:.02em}
-.leyenda{display:flex;flex-wrap:wrap;gap:16px 24px;margin:22px 0 0;padding:16px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
-.cifras{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0 0}
-.cifras div{background:var(--panel);border:1px solid var(--linea);padding:14px 16px}
-.cifras strong{display:block;font-family:"Archivo",sans-serif;font-weight:400;font-size:28px;line-height:1}
-.cifras span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
-.candados li{border-left:3px solid var(--naranja);background:var(--crema)}
-footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--linea);font-size:12px;color:var(--gris);letter-spacing:.06em;text-transform:uppercase}
-a{color:var(--tinta);text-decoration:underline;text-decoration-color:var(--naranja);text-underline-offset:3px}
-@media(min-width:640px){.cifras{grid-template-columns:repeat(4,1fr)}}
+  :root{
+    --fondo:#FBFAF7; --superficie:#FFFFFF; --elevada:#F3EFE7; --borde:#E6E0D5;
+    --texto:#1A1D24; --tenue:#5F6672; --tinta:#1A1D24;
+    --fuego:#F6A623; --angel:#3E8EA5; --demonio:#E35160;
+    --fuego-texto:#9A5700; --fuego-grande:#B26500; --fuego-glow:rgba(246,166,35,.12);
+    --sombra:0 18px 40px -30px rgba(26,29,36,.18);
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--fondo); color:var(--texto); font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.03;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.9'/></svg>")}
+  img{max-width:100%} a{color:inherit}
+  header.top{position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:12px 18px; background:rgba(251,250,247,.88); border-bottom:1px solid var(--borde); backdrop-filter:blur(6px)}
+  header.top .marcas{display:flex; align-items:center; gap:12px; min-width:0}
+  header.top .marcas img{height:22px; width:auto; display:block}
+  header.top .marcas .sello-lipo{display:inline-flex; align-items:center; background:var(--tinta); border-radius:8px; padding:5px 9px}
+  header.top .marcas .sello-lipo img{height:16px}
+  header.top .marcas .x{color:var(--tenue); font-size:.8rem}
+  header.top .estado{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--tenue)}
+  header.top .estado b{color:var(--fuego-texto); font-weight:700}
+  @media (max-width:420px){ header.top .marcas img{height:16px} header.top .marcas .sello-lipo{padding:4px 7px} header.top .marcas .sello-lipo img{height:13px} header.top{padding:10px 14px; gap:8px} header.top .estado{font-size:.78rem; letter-spacing:.06em; white-space:nowrap} header.top .estado .fecha{display:none} }
+
+  section{position:relative; padding:88px 20px; z-index:1}
+  section.crema{background:var(--elevada)}
+  section.calida{background:linear-gradient(180deg,var(--fondo),var(--elevada))}
+  .wrap{max-width:960px; margin:0 auto}
+  .eyebrow{display:inline-block; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; font-weight:700; color:var(--fuego-texto); border:1px solid rgba(246,166,35,.55); border-radius:999px; padding:5px 12px; margin-bottom:18px; background:var(--fuego-glow)}
+  h1,h2,h3,h4,.n,.cinta,.nucleo b{font-family:"Archivo",sans-serif}
+  h1{font-size:clamp(1.9rem,7vw,3.6rem); line-height:1.06; margin:0 0 18px; letter-spacing:-.01em; font-weight:800; text-transform:uppercase}
+  h2{font-size:clamp(1.35rem,5vw,2.2rem); line-height:1.12; margin:0 0 14px; font-weight:800; text-transform:uppercase; letter-spacing:.01em}
+  h1 em,h2 em{font-style:normal; color:var(--fuego-grande)}
+  h3{font-size:1.05rem; margin:0 0 6px; font-weight:700}
+  p{color:var(--tenue); font-size:1.02rem; line-height:1.55; margin:0 0 12px}
+  p.lead{color:var(--texto); font-size:1.12rem; max-width:58ch}
+  .grid{display:grid; gap:14px; margin-top:24px}
+  .card{border:1px solid var(--borde); border-radius:18px; padding:20px; background:var(--superficie); box-shadow:var(--sombra); position:relative}
+  .card h4{margin:0 0 8px; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--tenue)}
+  .card p{margin:0; font-size:.96rem}
+  .card .n{font-size:1.9rem; font-weight:800; letter-spacing:-.02em; color:var(--texto); line-height:1; margin-bottom:8px}
+  .card.fuego{border-color:rgba(246,166,35,.6); background:linear-gradient(180deg,var(--fuego-glow),var(--superficie))}
+  .cinta{position:absolute; top:-12px; left:20px; font-weight:700; font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--tinta); background:var(--fuego); border-radius:999px; padding:6px 12px; line-height:1}
+  @media (min-width:700px){ .grid.cuatro{grid-template-columns:repeat(4,1fr)} .grid.dos{grid-template-columns:1fr 1fr} }
+  .nota{font-size:.86rem; color:var(--tenue); margin-top:14px}
+
+  /* pastillas de estado */
+  .pill{display:inline-flex; align-items:center; gap:7px; font-size:.76rem; color:var(--texto); background:var(--elevada); border:1px solid var(--borde); border-radius:999px; padding:4px 10px; white-space:nowrap; font-weight:600}
+  .pill i{width:7px; height:7px; border-radius:50%; background:var(--angel); display:inline-block; box-shadow:0 0 0 3px rgba(62,142,165,.25); flex:none}
+  .pill.vivo i{background:#6CC58C; box-shadow:0 0 0 3px rgba(108,197,140,.22)}
+  .pill.falta i{background:transparent; border:1.5px solid var(--fuego-texto); box-shadow:none}
+  .leyenda{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
+
+  /* el cerebro y sus caras */
+  .rueda{display:grid; gap:14px; margin-top:28px; align-items:center}
+  .nucleo{border:1px solid rgba(246,166,35,.6); border-radius:22px; padding:26px 22px; text-align:center; background:linear-gradient(180deg,var(--fuego-glow),var(--superficie)); box-shadow:var(--sombra)}
+  .nucleo b{display:block; font-size:1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:.02em; line-height:1.1}
+  .nucleo span{display:block; color:var(--tenue); font-size:.9rem; margin-top:8px; line-height:1.45}
+  .nucleo .orbe{width:64px; height:64px; margin:0 auto 14px; border-radius:50%; background:radial-gradient(circle at 35% 35%,#FFD98A,var(--fuego) 55%,#C97B2E); box-shadow:0 0 0 8px var(--fuego-glow),0 14px 30px -14px rgba(201,123,46,.7); animation:respira 3.6s ease-in-out infinite}
+  @keyframes respira{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  .cara{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:start}
+  .cara h3{margin:0 0 4px; font-size:1rem}
+  .cara p{font-size:.92rem}
+  .cara .pill{margin-top:10px}
+  @media (min-width:860px){ .rueda{grid-template-columns:1fr 1.15fr 1fr; grid-template-rows:auto auto} .rueda .nucleo{grid-column:2; grid-row:1/3; align-self:center} .rueda .cara:nth-child(2){grid-column:1; grid-row:1} .rueda .cara:nth-child(3){grid-column:1; grid-row:2} .rueda .cara:nth-child(4){grid-column:3; grid-row:1} .rueda .cara:nth-child(5){grid-column:3; grid-row:2} }
+
+  /* la lista con signo de más */
+  .lista{list-style:none; padding:0; margin:18px 0 0}
+  .lista li{display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid var(--borde); color:var(--texto); font-size:.98rem; line-height:1.45; position:relative}
+  .lista li:last-child{border-bottom:1px solid var(--borde)}
+  .lista li>div{flex:1; min-width:0}
+  .lista li .titulo{display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center}
+  .lista li .titulo b{font-weight:700}
+  .lista li .resumen{margin:4px 0 0; font-size:.9rem}
+  .lista li .mas{flex:none; width:34px; height:34px; margin-top:-2px; border-radius:50%; border:1px solid var(--borde); background:var(--elevada); color:var(--fuego-texto); cursor:pointer; position:relative; padding:0; transition:background .3s ease,border-color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+  .lista li .mas span{position:absolute; left:50%; top:50%; width:12px; height:2px; background:currentColor; border-radius:2px; transform:translate(-50%,-50%); transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .lista li .mas span+span{transform:translate(-50%,-50%) rotate(90deg)}
+  .lista li .mas:hover,.lista li .mas:focus-visible{border-color:rgba(246,166,35,.8); background:var(--fuego-glow)}
+  .lista li .mas:focus-visible{outline:2px solid var(--fuego-texto); outline-offset:2px}
+  .lista li.abierto .mas{background:var(--fuego-texto); border-color:var(--fuego-texto); color:#FFF; transform:rotate(180deg)}
+  .lista li.abierto .mas span+span{transform:translate(-50%,-50%) rotate(0deg)}
+  .lista li .desglose{display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1),margin-top .5s ease; margin-top:0}
+  .lista li .desglose-in{overflow:hidden; min-height:0; opacity:0; transform:translateY(-6px); transition:opacity .4s ease .05s,transform .5s cubic-bezier(.2,.8,.2,1)}
+  .lista li.abierto .desglose{grid-template-rows:1fr; margin-top:12px}
+  .lista li.abierto .desglose-in{opacity:1; transform:none}
+  .lista li .tres{margin:0; display:grid; gap:8px}
+  .lista li .tres>div{border:1px solid var(--borde); border-radius:12px; padding:10px 12px; background:var(--superficie)}
+  .lista li .tres dt{font-family:"Archivo",sans-serif; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--fuego-texto); font-weight:800; margin-bottom:4px}
+  .lista li .tres dd{margin:0; color:var(--tenue); font-size:.86rem; line-height:1.5}
+  .lista li .desglose-in>*:last-child{margin-bottom:2px}
+  @media (min-width:720px){ .lista li .tres{grid-template-columns:repeat(3,1fr)} }
+  .cara .desglose{grid-column:1/-1}
+
+  /* palomitas */
+  .checks{list-style:none; padding:0; margin:18px 0 0}
+  .checks li{display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid var(--borde); color:var(--texto); font-size:.98rem; line-height:1.45}
+  .checks li:last-child{border-bottom:1px solid var(--borde)}
+  .checks li .b{flex:none; width:22px; height:22px; border-radius:50%; border:1px solid var(--fuego-texto); display:grid; place-items:center; margin-top:1px}
+  .checks li .b::after{content:''; width:5px; height:9px; border-right:2px solid var(--fuego-texto); border-bottom:2px solid var(--fuego-texto); transform:rotate(45deg) translate(-1px,-1px)}
+  .checks li small{display:block; color:var(--tenue); font-size:.84rem; margin-top:2px}
+
+  footer{padding:60px 20px 90px; text-align:center; color:var(--tenue); font-size:.82rem; border-top:1px solid var(--borde); position:relative; z-index:1}
+  footer img{height:22px; opacity:.9; margin-bottom:12px}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.on{opacity:1; transform:none}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none} .nucleo .orbe{animation:none} .lista li .desglose,.lista li .desglose-in,.lista li .mas,.lista li .mas span{transition:none} }
 </style>
 </head>
 <body>
-<div class="hoja">
-<header>
-  <div class="marca">Liposser · Hostess</div>
-  <h1>Asistentes para concierge médica y ventas</h1>
-  <div class="sub">Lista de habilidades · propuesta para la mesa del 24 de septiembre de 2026</div>
-  <p class="intro">El doctor pidió el 22 de septiembre que Hostess proponga qué saben hacer estos asistentes. Aquí está la lista, con lo que ya funciona hoy y lo que se construye cuando llegue la información de la clínica. Se encienden después de la página del doctor, como él lo ordenó.</p>
-  <div class="leyenda">
-    <span class="estado ya"><i></i>Ya existe y está medido</span>
-    <span class="estado medio"><i></i>Se construye con lo que ya hay</span>
-    <span class="estado falta"><i></i>Necesita algo de Liposser</span>
+<header class="top">
+  <div class="marcas">
+    <span class="sello-lipo"><img src="https://hostess.mx/liposser/media/logo_liposser-1024x313.png" alt="Liposser"></span>
+    <span class="x">×</span>
+    <img src="https://hostess.mx/logo/hostess-lockup-alpha.png" alt="Hostess">
   </div>
+  <div class="estado"><b>Asistentes</b><span class="fecha"> · 24 sep 2026</span></div>
 </header>
 
-<h2><small>Dónde viven</small>Dos asistentes, un solo cerebro</h2>
-<p class="nota">Los dos leen la misma memoria: lo publicado en liposser.com y en la página del doctor, más el archivo de servicios de sala cuando llegue. Ninguno inventa un dato que no esté ahí.</p>
-<ul class="lista">
-  <li><b>Asistente de la clínica, dentro del panel</b><p>Para Geraldine, Laura Torres, Shadia y Yolotzi. Contesta con la fuente al pie de cada respuesta y con botón de copiar. Solo entra la clínica con su clave.</p><span class="estado ya"><i></i>Ya existe</span><span class="fuente">hostess.mx/liposser/panel · modo «Asistente de la clínica»</span></li>
-  <li><b>Recepción en el WhatsApp de la clínica</b><p>Contesta al paciente como recepcionista, de usted, en español o inglés, y pasa cada solicitud a una persona con nombre. Está armada; se enciende cuando el doctor conecte su número y dé luz verde.</p><span class="estado ya"><i></i>Ya existe · armada, no encendida</span><span class="fuente">hostess.mx/liposser/recepcionista · 15 de septiembre</span></li>
-</ul>
-<div class="cifras">
-  <div><strong>100,006</strong><span>conversaciones de prueba</span></div>
-  <div><strong>89.4%</strong><span>contestó bien lo preguntado</span></div>
-  <div><strong>85.3%</strong><span>terminan en valoración</span></div>
-  <div><strong>0</strong><span>promesas, precios o diagnósticos</span></div>
-</div>
+<section id="hero">
+  <div class="wrap">
+    <span class="eyebrow">Asistentes · Liposser</span>
+    <h1>Asistentes que trabajan al lado de la concierge. <em>Un solo cerebro.</em></h1>
+    <p class="lead">El doctor pidió el 22 de septiembre que Hostess proponga qué saben hacer. Esta es la lista: lo que ya funciona y está medido, lo que se construye con lo que hay y lo que espera un dato de la clínica. Se encienden después de la página del doctor, en el orden que él fijó.</p>
+    <div class="grid cuatro">
+      <div class="card reveal"><div class="n" data-cuenta="100006">0</div><p>conversaciones de prueba</p></div>
+      <div class="card reveal"><div class="n"><span data-cuenta="89" data-dec=".4">0</span>%</div><p>contestó bien lo que se preguntó</p></div>
+      <div class="card reveal"><div class="n"><span data-cuenta="85" data-dec=".3">0</span>%</div><p>terminan en valoración con el doctor</p></div>
+      <div class="card reveal fuego"><div class="n">0</div><p>promesas, cifras no autorizadas o diagnósticos</p></div>
+    </div>
+    <p class="nota">Medido el 15 de septiembre en la recepción de WhatsApp de la clínica, con los mismos jueces de siempre. Nada de aquí es promesa: es lo que salió de la prueba.</p>
+    <div class="leyenda">
+      <span class="pill vivo"><i></i>Ya existe y está medido</span>
+      <span class="pill"><i></i>Se construye con lo que ya hay</span>
+      <span class="pill falta"><i></i>Necesita algo de Liposser</span>
+    </div>
+  </div>
+</section>
 
-<h2><small>1</small>Servicio al cliente</h2>
-<ul class="lista">
-  <li><b>Precio, qué incluye, locación, horario, cómo agendar</b><p>Explica qué mueve el precio y qué incluye una cirugía, sin dar cifra. Toda cotización la entrega el doctor por escrito en la valoración.</p><p class="ej">«¿Cuánto cuesta la lipo?» · «¿Dónde están?» · «¿Atienden sábados?»</p><span class="estado ya"><i></i>Ya existe</span></li>
-  <li><b>Lo clínico lo contesta el doctor</b><p>Ninguna pregunta médica se contesta por mensaje. Todas terminan en valoración con el doctor, presencial o por videollamada.</p><p class="ej">«¿Soy candidata?» · «¿Duele?» · «¿Cuánto tarda la recuperación?»</p><span class="estado ya"><i></i>Ya existe</span></li>
-  <li><b>Paciente de fuera y en inglés</b><p>Valoración por videollamada, tono de usted, mismo guion en los dos idiomas.</p><span class="estado ya"><i></i>Ya existe</span></li>
-  <li><b>Registro y seguimiento de cada solicitud</b><p>Nombre, ciudad y qué busca; una persona de la clínica confirma día y hora el mismo día hábil. Después se conecta a HubSpot, que se queda como CRM.</p><span class="estado medio"><i></i>Se construye: la conexión a HubSpot</span></li>
-  <li><b>Postoperatorio</b><p>Recordatorios de cuidados y citas de revisión con el texto que el doctor apruebe. Nunca una indicación médica propia.</p><span class="estado falta"><i></i>Necesita: indicaciones aprobadas por el doctor</span></li>
-</ul>
+<section id="cerebro" class="crema">
+  <div class="wrap">
+    <span class="eyebrow">1 · Un solo cerebro</span>
+    <h2>Una sola memoria. <em>Las caras que hagan falta.</em></h2>
+    <p class="lead">Los asistentes leen la misma memoria: lo publicado en liposser.com y en la página del doctor, más el archivo de servicios de sala cuando llegue. Ninguno inventa un dato que no esté ahí, y lo que no tiene, lo dice y lo pasa a una persona.</p>
+    <div class="rueda lista">
+      <div class="nucleo reveal"><div class="orbe"></div><b>Un solo cerebro</b><span>La memoria de la clínica: procedimientos, sala, locación, concierge y las reglas del doctor.</span></div>
+      <li class="card cara reveal"><div><h3>Dentro del panel de la clínica</h3><p>Para Geraldine, Laura Torres, Shadia y Yolotzi. Contesta con la fuente al pie y botón de copiar.</p><span class="pill vivo"><i></i>Ya vive</span></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Dónde</dt><dd>hostess.mx/liposser/panel, solo con la clave de la clínica.</dd></div><div><dt>Qué hace hoy</dt><dd>Responde lo publicado del sitio y del doctor, sin precio de cirugía, y cada respuesta cierra con su fuente.</dd></div><div><dt>Qué le falta</dt><dd>El archivo de servicios de sala para poder sugerir qué ofrecer.</dd></div></dl></div></div></li>
+      <li class="card cara reveal"><div><h3>En el WhatsApp de la clínica</h3><p>Contesta al paciente como recepcionista, de usted, en español o inglés, y pasa cada solicitud a una persona con nombre.</p><span class="pill vivo"><i></i>Armado, no encendido</span></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Cómo se enciende</dt><dd>El doctor conecta su número sin borrar nada: los chats de hoy se quedan. Después da la luz verde.</dd></div><div><dt>Qué hace hoy</dt><dd>Precio sin cifra, locación, horario, agenda, paciente de fuera. Lo clínico, siempre a valoración.</dd></div><div><dt>Prueba</dt><dd>hostess.mx/liposser/recepcionista, para verlo antes de encenderlo.</dd></div></dl></div></div></li>
+      <li class="card cara reveal"><div><h3>En los sitios</h3><p>La bolita que ya contesta en las páginas de Liposser y del doctor, y cierra siempre en valoración o en el WhatsApp del sitio.</p><span class="pill vivo"><i></i>Ya vive</span></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Dónde</dt><dd>En todas las páginas de la clínica y del doctor que sirve hostess.mx.</dd></div><div><dt>Qué hace hoy</dt><dd>Explica qué mueve el precio y qué incluye; nunca inventa un número.</dd></div><div><dt>Después</dt><dd>La misma bolita entra a la página nueva del doctor cuando esté aprobada.</dd></div></dl></div></div></li>
+      <li class="card cara reveal"><div><h3>En HubSpot</h3><p>Cada solicitud que entra queda también en el CRM que el doctor decidió conservar.</p><span class="pill"><i></i>Después</span></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Por qué</dt><dd>«Gasté una buena lana y se va a usar.» Lo nuestro se conecta, no lo sustituye.</dd></div><div><dt>Qué pasa</dt><dd>Nombre, ciudad, qué busca y de dónde llegó, sin que nadie lo capture a mano.</dd></div><div><dt>Cuándo</dt><dd>Cuando la clínica dé el acceso, después de la página.</dd></div></dl></div></div></li>
+    </div>
+  </div>
+</section>
 
-<h2><small>2</small>Ventas y neuroventas</h2>
-<p class="nota">Aquí no se vende, se ofrece. Una sola sugerencia por conversación, ligada a lo que la paciente ya se hizo.</p>
-<ul class="lista">
-  <li><b>Qué ofrecer después de cada procedimiento</b><p>El ejemplo del doctor: «tengo una paciente que salió de facial, dime qué productos le ofrezco». La concierge pregunta y recibe una sugerencia sutil con su porqué.</p><span class="estado falta"><i></i>Necesita: archivo de servicios de sala con todas las tecnologías y las cirugías descritas</span></li>
-  <li><b>Cierre a valoración</b><p>Cada conversación conduce a agendar, sin presión y sin descuentos. Es lo que hoy ya hace la recepción.</p><span class="estado ya"><i></i>Ya existe</span></li>
-  <li><b>Manejo de objeciones</b><p>«Es caro», «lo voy a pensar», «en otra clínica es más barato», «me da miedo». Respuesta en voz de lujo: no baja el precio, no promete resultados, ofrece la valoración.</p><span class="estado falta"><i></i>Necesita: los flujos de conversación de Laura Perini que prepara el doctor</span></li>
-  <li><b>Insistencia en precio por mensaje</b><p>Explica con calma por qué no da cifra y vuelve a la valoración. Ya está medido: cero precios fuera de lo publicado.</p><span class="estado ya"><i></i>Ya existe</span></li>
-  <li><b>Mensaje prellenado desde el cuestionario</b><p>Presupuesto, qué busca, cuándo, ciudad, nombre y WhatsApp llegan ya ordenados a la concierge. El rango arranca en 165 mil pesos.</p><span class="estado medio"><i></i>Se construye: corregir el rango</span></li>
-</ul>
+<section id="servicio">
+  <div class="wrap">
+    <span class="eyebrow">2 · Servicio al cliente</span>
+    <h2>Contestar como la clínica, <em>a cualquier hora.</em></h2>
+    <p class="lead">De usted, corto, en el idioma en que le escriban. Toda pregunta médica termina con el doctor.</p>
+    <ul class="lista">
+      <li class="reveal"><div><div class="titulo"><b>Precio, qué incluye, locación, horario y cómo agendar</b><span class="pill vivo"><i></i>Ya existe</span></div><p class="resumen">Explica qué mueve el precio y qué incluye una cirugía, sin dar cifra.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«¿Cuánto cuesta la lipo?» · «¿Dónde están?» · «¿Atienden sábados?»</dd></div><div><dt>Cómo responde</dt><dd>La cotización la entrega el doctor por escrito en la valoración, con fecha y vigencia. Incluye honorarios, quirófano acreditado, anestesiólogo, enfermería y recuperación.</dd></div><div><dt>De dónde lo saca</dt><dd>Lo publicado en liposser.com y en la página del doctor. Medido: cero cifras fuera de lo publicado.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Lo clínico lo contesta el doctor</b><span class="pill vivo"><i></i>Ya existe</span></div><p class="resumen">Ninguna pregunta médica se contesta por mensaje.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«¿Soy candidata?» · «¿Duele?» · «¿Cuánto tarda la recuperación?»</dd></div><div><dt>Cómo responde</dt><dd>Con calma explica que eso lo define el doctor viendo su caso, y ofrece la valoración, presencial o por videollamada.</dd></div><div><dt>Medido</dt><dd>Cero diagnósticos en las 100,006 conversaciones de prueba.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Paciente de fuera y en inglés</b><span class="pill vivo"><i></i>Ya existe</span></div><p class="resumen">Valoración por videollamada, tono de usted, el mismo guion en los dos idiomas.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«I'm flying from Houston, can I have a consultation first?»</dd></div><div><dt>Cómo responde</dt><dd>En inglés, ofrece videollamada de valoración y explica cómo se organiza una cirugía para quien viene de fuera.</dd></div><div><dt>Medido</dt><dd>Contestó en inglés a quien escribió en inglés en el 99.3% de los casos.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Registro y seguimiento de cada solicitud</b><span class="pill"><i></i>Se construye: la conexión a HubSpot</span></div><p class="resumen">Nombre, ciudad y qué busca; una persona de la clínica confirma día y hora el mismo día hábil.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Ana Karen Ruiz, desde Zapopan» queda registrada y la concierge la ve con todo su contexto.</dd></div><div><dt>Qué ya hay</dt><dd>El registro y el paso a persona ya funcionan en la recepción.</dd></div><div><dt>Qué se construye</dt><dd>Que ese registro caiga también en HubSpot, cuando la clínica dé el acceso.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Postoperatorio</b><span class="pill falta"><i></i>Necesita: indicaciones aprobadas por el doctor</span></div><p class="resumen">Recordatorios de cuidados y citas de revisión con el texto que el doctor apruebe.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Mañana toca su revisión a las 11. Recuerde la faja y no manejar.»</dd></div><div><dt>Cómo responde</dt><dd>Solo con el texto aprobado; ante cualquier síntoma, pasa a la concierge y al doctor en el momento.</dd></div><div><dt>Qué falta</dt><dd>Las indicaciones por procedimiento, escritas o aprobadas por el doctor.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+    </ul>
+  </div>
+</section>
 
-<h2><small>3</small>Control de daños y clientes difíciles de alto lujo</h2>
-<ul class="lista">
-  <li><b>Desescalar</b><p>Reconoce la molestia, no discute, no se justifica, y en el mismo mensaje pasa a una persona con nombre. Regla ya vigente: ninguna conversación se queda sin salida.</p><span class="estado medio"><i></i>Se construye sobre la regla que ya existe</span></li>
-  <li><b>Queja por resultado o complicación</b><p>Cero opinión médica. Cita con el doctor el mismo día hábil, tono de usted, registro completo para que la concierge llegue enterada.</p><span class="estado medio"><i></i>Se construye</span></li>
-  <li><b>Reseña negativa o amenaza en redes</b><p>Redacta un borrador corto de respuesta pública y lo pasa a Yolotzi. Nunca contesta sola en público.</p><span class="estado medio"><i></i>Se construye</span></li>
-  <li><b>Clientes difíciles de alto lujo</b><p>Paciente que exige trato inmediato, que compara con otra clínica o que pide al doctor en persona: guion de cortesía firme, sin prometer lo que no está en agenda.</p><span class="estado falta"><i></i>Necesita: los flujos de Laura Perini</span></li>
-</ul>
+<section id="ventas" class="crema">
+  <div class="wrap">
+    <span class="eyebrow">3 · Ventas y neuroventas</span>
+    <h2>Aquí no se vende. <em>Se ofrece.</em></h2>
+    <p class="lead">Una sola sugerencia por conversación, ligada a lo que la paciente ya se hizo. Nunca una lista de precios.</p>
+    <ul class="lista">
+      <li class="reveal"><div><div class="titulo"><b>Qué ofrecer después de cada procedimiento</b><span class="pill falta"><i></i>Necesita: el archivo de servicios de sala</span></div><p class="resumen">El ejemplo del doctor: «tengo una paciente que salió de facial, dime qué productos le ofrezco».</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Cómo funciona</dt><dd>La concierge pregunta en el panel y recibe una sugerencia sutil con su porqué y el texto listo para copiar.</dd></div><div><dt>Qué falta</dt><dd>Todas las tecnologías de sala y todas las cirugías descritas, como lo dijo el doctor el 22.</dd></div><div><dt>Cuándo</dt><dd>Unos quince días después de que llegue ese archivo.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Cierre a valoración</b><span class="pill vivo"><i></i>Ya existe</span></div><p class="resumen">Cada conversación conduce a agendar, sin presión y sin descuentos.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Ok, quiero agendar» → pide nombre y ciudad, y una persona confirma el mismo día hábil.</dd></div><div><dt>Cómo responde</dt><dd>Siempre con salida: valoración, una persona de la clínica o la liga de agendar.</dd></div><div><dt>Medido</dt><dd>El 85.3% de las conversaciones de prueba terminan en valoración; cero se quedan sin salida.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Manejo de objeciones</b><span class="pill falta"><i></i>Necesita: los flujos de Laura Perini</span></div><p class="resumen">«Es caro», «lo voy a pensar», «en otra clínica es más barato», «me da miedo».</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Cómo responde</dt><dd>En voz de lujo: no baja el precio, no promete resultados, no habla mal de nadie, y vuelve a la valoración.</dd></div><div><dt>Qué ya hay</dt><dd>La regla de no dar cifra ni prometer ya está medida y vigente.</dd></div><div><dt>Qué falta</dt><dd>Los flujos de conversación que el doctor prepara con lo de Laura Perini; es lo último que se carga.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Insistencia en precio por mensaje</b><span class="pill vivo"><i></i>Ya existe</span></div><p class="resumen">Explica con calma por qué no da cifra y vuelve a la valoración.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Aunque sea un aproximado.»</dd></div><div><dt>Cómo responde</dt><dd>«Cualquier cifra por mensaje sería falsa para su caso. La real, con todo incluido, se la entrega el doctor por escrito al terminar la valoración.»</dd></div><div><dt>Medido</dt><dd>Cero precios fuera del rango publicado en 100,006 conversaciones.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>El cuestionario que le gustó al doctor</b><span class="pill"><i></i>Se construye: corregir el rango</span></div><p class="resumen">Presupuesto, qué busca, cuándo, ciudad, nombre y WhatsApp llegan ya ordenados a la concierge.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Qué ya hay</dt><dd>El cuestionario y el mensaje prellenado que abre el WhatsApp.</dd></div><div><dt>Qué se corrige</dt><dd>El rango de precio arranca en 165 mil pesos; nada por debajo. Y los botones de cita y WhatsApp lo abren.</dd></div><div><dt>Para qué</dt><dd>Que la concierge reciba una solicitud filtrada, no un «hola».</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+    </ul>
+  </div>
+</section>
 
-<h2><small>4</small>Mercadotecnia, neuromarketing y SEO</h2>
-<p class="nota">Para Yolotzi. Entra al final, cuando las dos páginas estén terminadas.</p>
-<ul class="lista">
-  <li><b>Textos para redes en la voz del doctor</b><p>Tercera persona, lenguaje de Forbes y Robb Report, sin negaciones ni garantías, solo sus campañas.</p><span class="estado medio"><i></i>Se construye después de la página</span></li>
-  <li><b>Que salga el doctor y Liposser en Google y en la inteligencia artificial</b><p>Cada página nueva nace con títulos, descripciones y datos estructurados; se mide cada semana.</p><span class="estado medio"><i></i>Se construye con la página</span></li>
-</ul>
+<section id="danos">
+  <div class="wrap">
+    <span class="eyebrow">4 · Control de daños y clientes difíciles</span>
+    <h2>Cortesía firme. <em>Cero opinión médica.</em></h2>
+    <p class="lead">Reconoce la molestia, no discute, no se justifica, y en el mismo mensaje pasa a una persona con nombre.</p>
+    <ul class="lista">
+      <li class="reveal"><div><div class="titulo"><b>Desescalar</b><span class="pill"><i></i>Se construye sobre la regla que ya existe</span></div><p class="resumen">Paciente molesta por una espera, un mensaje sin respuesta o un malentendido.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Llevo tres días esperando que me contesten.»</dd></div><div><dt>Cómo responde</dt><dd>Reconoce, no explica de más, y en el mismo mensaje la pasa a Geraldine, Laura o Shadia con todo el contexto.</dd></div><div><dt>Qué ya hay</dt><dd>Ninguna conversación se queda sin salida: cero en la prueba.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Queja por resultado o complicación</b><span class="pill"><i></i>Se construye</span></div><p class="resumen">Cita con el doctor el mismo día hábil, tono de usted, registro completo para que la concierge llegue enterada.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Tengo inflamación y me duele más que ayer.»</dd></div><div><dt>Cómo responde</dt><dd>Sin opinar: prioridad, cita con el doctor y aviso inmediato a la concierge. Si suena a urgencia, número de urgencias.</dd></div><div><dt>Regla vigente</dt><dd>Lo clínico lo contesta el doctor; ya está medido en la recepción.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Reseña negativa o amenaza en redes</b><span class="pill"><i></i>Se construye</span></div><p class="resumen">Redacta un borrador corto de respuesta pública y lo pasa a Yolotzi. Nunca contesta sola en público.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>Una reseña de una estrella con un reclamo por atención.</dd></div><div><dt>Cómo responde</dt><dd>Borrador de dos líneas, sin datos del paciente, que invita a resolverlo en privado. Lo publica una persona.</dd></div><div><dt>Candado</dt><dd>Nada de esto sale sin que alguien de la clínica lo apruebe.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Clientes difíciles de alto lujo</b><span class="pill falta"><i></i>Necesita: los flujos de Laura Perini</span></div><p class="resumen">Exige trato inmediato, compara con otra clínica o pide al doctor en persona.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Quiero que me conteste el doctor directamente, hoy.»</dd></div><div><dt>Cómo responde</dt><dd>Cortesía firme: no promete lo que no está en agenda, ofrece lo que sí, y deja a la concierge al mando.</dd></div><div><dt>Qué falta</dt><dd>Los flujos del doctor para tener su voz exacta en estos casos.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+    </ul>
+  </div>
+</section>
 
-<h2><small>Candados</small>Lo que ningún asistente hace</h2>
-<ul class="lista candados">
-  <li><b>Dinero, cuentas, contaduría, cobros</b><p>Orden del doctor: «el dinero por fuera se mueve». No se conecta a nada financiero.</p></li>
-  <li><b>Promesas, garantías, cifras, diagnósticos</b><p>Medido en las 100,006 conversaciones: cero.</p></li>
-  <li><b>Confirmar una fecha de cirugía por mensaje</b><p>Solo una persona de la clínica confirma.</p></li>
-  <li><b>Inventar</b><p>Lo que no está en la memoria de la clínica, lo dice: «no lo tengo aquí» y pasa a una persona.</p></li>
-</ul>
+<section id="marketing" class="crema">
+  <div class="wrap">
+    <span class="eyebrow">5 · Mercadotecnia, neuromarketing y SEO</span>
+    <h2>Para Yolotzi. <em>Entra al final.</em></h2>
+    <p class="lead">Cuando las dos páginas estén terminadas, como lo pidió el doctor.</p>
+    <ul class="lista">
+      <li class="reveal"><div><div class="titulo"><b>Textos para redes en la voz del doctor</b><span class="pill"><i></i>Se construye después de la página</span></div><p class="resumen">Tercera persona, lenguaje de Forbes y Robb Report, sin negaciones ni garantías, solo sus campañas.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Ejemplo</dt><dd>«Dame tres textos para la campaña de Mommy Makeover, uno por dolor.»</dd></div><div><dt>Cómo responde</dt><dd>Con el reglamento del doctor cargado: sin primera persona, sin marcas de aparatos, sin promesas.</dd></div><div><dt>Base</dt><dd>Los textos oficiales del grupo y la página nueva ya aprobada.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+      <li class="reveal"><div><div class="titulo"><b>Que salgan el doctor y Liposser en Google y en la inteligencia artificial</b><span class="pill"><i></i>Se construye con la página</span></div><p class="resumen">Cada página nueva nace con títulos, descripciones y datos estructurados; se mide cada semana.</p><div class="desglose"><div class="desglose-in"><dl class="tres"><div><dt>Qué es</dt><dd>Que al buscar «cirujano plástico Guadalajara» o preguntarle a una IA, aparezca él con sus certificaciones.</dd></div><div><dt>Cómo</dt><dd>La página nueva se construye ya con eso adentro, no se agrega después.</dd></div><div><dt>Medida</dt><dd>Un reporte semanal de posiciones y menciones, sin adornos.</dd></div></dl></div></div></div><button class="mas" aria-label="Ver más" aria-expanded="false"><span></span><span></span></button></li>
+    </ul>
+  </div>
+</section>
 
-<h2><small>Para encenderlos</small>Lo que necesitamos de Liposser</h2>
-<ul class="lista">
-  <li><b>El archivo de servicios de sala</b><p>Todas las tecnologías y todas las cirugías descritas, como lo dijo el doctor. Con eso se monta la base en unos quince días.</p></li>
-  <li><b>Los flujos de conversación de Laura Perini</b><p>Los prepara el doctor; es lo último que se carga.</p></li>
-  <li><b>El número de WhatsApp de la clínica conectado y la luz verde del doctor</b><p>Se conecta sin borrar nada: los chats de hoy se quedan.</p></li>
-  <li><b>Después, el acceso a HubSpot</b><p>Para que cada solicitud quede también ahí.</p></li>
-</ul>
+<section id="candados" class="calida">
+  <div class="wrap">
+    <span class="eyebrow">Candados</span>
+    <h2>Lo que ningún asistente hace, <em>nunca.</em></h2>
+    <div class="grid dos">
+      <div class="card fuego reveal"><h4>Dinero</h4><p><b>Cuentas, contaduría, cobros.</b> Orden del doctor: «el dinero por fuera se mueve». No se conecta a nada financiero.</p></div>
+      <div class="card fuego reveal"><h4>Promesas</h4><p><b>Garantías, cifras, diagnósticos.</b> Medido en las 100,006 conversaciones de prueba: cero.</p></div>
+      <div class="card fuego reveal"><h4>Fechas</h4><p><b>Confirmar una cirugía por mensaje.</b> Solo una persona de la clínica confirma.</p></div>
+      <div class="card fuego reveal"><h4>Inventar</h4><p><b>Lo que no está en la memoria de la clínica</b> lo dice: «no lo tengo aquí», y pasa a una persona.</p></div>
+    </div>
+  </div>
+</section>
 
-<footer>Hostess · propuesta interna para Liposser · 24 de septiembre de 2026 · no se publica ni se indexa</footer>
-</div>
+<section id="encender" class="crema">
+  <div class="wrap">
+    <span class="eyebrow">Para encenderlos</span>
+    <h2>Lo que necesitamos <em>de Liposser.</em></h2>
+    <ul class="checks">
+      <li class="reveal"><span class="b"></span><div>El archivo de servicios de sala<small>Todas las tecnologías y todas las cirugías descritas, como lo dijo el doctor. Con eso se monta la base en unos quince días.</small></div></li>
+      <li class="reveal"><span class="b"></span><div>Los flujos de conversación de Laura Perini<small>Los prepara el doctor; es lo último que se carga.</small></div></li>
+      <li class="reveal"><span class="b"></span><div>El número de WhatsApp de la clínica conectado y la luz verde del doctor<small>Se conecta sin borrar nada: los chats de hoy se quedan.</small></div></li>
+      <li class="reveal"><span class="b"></span><div>Después, el acceso a HubSpot<small>Para que cada solicitud quede también ahí.</small></div></li>
+    </ul>
+    <div class="card fuego reveal" style="margin-top:26px"><span class="cinta">El orden del doctor</span><p style="margin-top:6px"><b>Primero la página de tucirujanoleal. Después todo lo demás.</b> «No quieran escalarse a tres o seis meses cuando ni siquiera hemos terminado el 1%.» Los asistentes se encienden cuando la página esté y llegue la información de la clínica.</p></div>
+  </div>
+</section>
+
+<footer>
+  <img src="https://hostess.mx/logo/hostess-lockup-alpha.png" alt="Hostess">
+  <div>Preparado por Hostess para Liposser · Guadalajara · 24 de septiembre de 2026</div>
+  <div style="margin-top:6px">Alex Luján · Pablo Uribe · hostess.mx</div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // signo de más: abre y cierra el detalle
+  document.querySelectorAll('.mas').forEach(function(b){
+    b.addEventListener('click',function(){
+      var li=b.closest('li'); var ab=li.classList.toggle('abierto'); b.setAttribute('aria-expanded',ab?'true':'false');
+    });
+  });
+  // contadores vivos
+  function cuenta(el){
+    var fin=parseInt(el.getAttribute('data-cuenta'),10)||0, dec=el.getAttribute('data-dec')||'', t0=null, dur=1400;
+    function pinta(v){ el.textContent=v.toLocaleString('es-MX')+(v===fin?dec:''); }
+    if(reduce){ pinta(fin); return; }
+    function paso(t){ if(!t0) t0=t; var k=Math.min(1,(t-t0)/dur); k=1-Math.pow(1-k,3); pinta(Math.round(fin*k)); if(k<1) requestAnimationFrame(paso); }
+    requestAnimationFrame(paso);
+  }
+  var hechos=false;
+  function prende(){ if(hechos) return; hechos=true; document.querySelectorAll('[data-cuenta]').forEach(cuenta); }
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) || reduce){ els.forEach(function(e){e.classList.add('on');}); prende(); return; }
+  var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('on'); io.unobserve(x.target); if(x.target.closest('#hero')) prende(); } }); },{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){ io.observe(e); });
+  setTimeout(function(){ prende(); document.querySelectorAll('#hero .reveal').forEach(function(e){e.classList.add('on');}); },900);
+  setTimeout(function(){ els.forEach(function(e){e.classList.add('on');}); },6000);
+})();
+</script>
 </body>
 </html>
